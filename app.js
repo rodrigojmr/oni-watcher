@@ -8,6 +8,7 @@ const cookieParser = require('cookie-parser');
 const expressSession = require('express-session');
 const logger = require('morgan');
 const mongoose = require('mongoose');
+const axios = require('axios');
 const passport = require('passport');
 const sassMiddleware = require('node-sass-middleware');
 const serveFavicon = require('serve-favicon');
@@ -16,6 +17,9 @@ const passportConfigure = require('./passport-configuration.js');
 const indexRouter = require('./routes/index');
 const authenticationRouter = require('./routes/authentication');
 const profileRouter = require('./routes/profile');
+
+axios.defaults.headers.common['Accept'] = 'application/vnd.api´json';
+axios.defaults.headers.common['Content-Type'] = 'application/vnd.api´json';
 
 const app = express();
 
