@@ -8,8 +8,15 @@ router.get('/', (req, res, next) => {
   res.render('index', { title: 'Hello World!' });
 });
 
-router.get('/private', routeGuard, (req, res, next) => {
-  res.render('private');
+router.get('/profile', routeGuard, (req, res, next) => {
+  res.render('profile');
 });
+
+const roleRouteGuard = require('./../middleware/role-route-guard');
+
+router.get('/User', routeGuard, roleRouteGuard(['User', 'Moderator']), (req, res, next) => {
+  res.render('User');
+});
+
 
 module.exports = router;

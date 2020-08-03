@@ -29,12 +29,15 @@ passport.use(
     },
     (req, email, password, callback) => {
       const name = req.body.name;
+      const role = req.body.role;
+
       bcryptjs
         .hash(password, 10)
         .then(hash => {
           return User.create({
             name,
             email,
+            role,
             passwordHash: hash
           });
         })

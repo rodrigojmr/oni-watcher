@@ -7,8 +7,9 @@ module.exports = (req, res, next) => {
   if (req.user) {
     next();
   } else {
-    const error = new Error('AUTHENTICATION_REQUIRED');
+    const error = new Error('User is not authenticated');
     error.status = 401;
     next(error);
   }
 };
+

@@ -21,6 +21,12 @@ const schema = new mongoose.Schema({
   avatar: {
     type: String
   },
+  role: {
+    type: String,
+    enum: ["User", "Moderator"],
+    required: true,
+    default: "User"
+  }, 
   passwordHash: {
     type: String,
     required: [true, 'Password is required.']
