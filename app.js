@@ -17,9 +17,7 @@ const passportConfigure = require('./passport-configuration.js');
 const indexRouter = require('./routes/index');
 const authenticationRouter = require('./routes/authentication');
 const profileRouter = require('./routes/profile');
-
-axios.defaults.headers.common['Accept'] = 'application/vnd.api´json';
-axios.defaults.headers.common['Content-Type'] = 'application/vnd.api´json';
+const searchRouter = require('./routes/search');
 
 const app = express();
 
@@ -65,6 +63,7 @@ app.use(bindUserToViewLocals);
 app.use('/', indexRouter);
 app.use('/authentication', authenticationRouter);
 app.use('/profile', profileRouter);
+app.use('/', searchRouter);
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => {
