@@ -39,6 +39,7 @@ passport.use(
           });
         })
         .then(user => {
+          if (user) 
           callback(null, user);
         })
         .catch(error => {
@@ -47,6 +48,8 @@ passport.use(
     }
   )
 );
+
+
 
 passport.use(
   'local-sign-in',
@@ -63,7 +66,7 @@ passport.use(
         if (passwordMatchesHash) {
           callback(null, user);
         } else {
-          callback(new Error('WRONG_PASSWORD'));
+          callback(new Error('The password is incorrect'));
         }
       })
       .catch(error => {

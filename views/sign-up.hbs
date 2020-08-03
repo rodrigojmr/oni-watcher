@@ -4,7 +4,7 @@
   <label for="input-email">Email</label>
   <input type="email" id="input-email" name="email" placeholder="Your Email" />
   <label for="input-password">Password</label>
-  <input type="password" name="password" id="input-password" placeholder="A Strong Password" />
+  <input type="password"  name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"  title="Must contain at least one number and one uppercase and lowercase letter, and at least 6 or more characters" id="input-password" placeholder="*********" />
   <button>Sign Up</button>
 </form>
 <a href="/authentication/github">Sign Up with GitHub</a>
