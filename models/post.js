@@ -8,16 +8,11 @@ const postSchema = new mongoose.Schema({
   },
   title: {
     type: String,
-    minlength: 5,
-    maxlength: 200,
-    required: true
-  },
-  banner: {
-    type: String
+    maxlength: 60
   },
   content: {
     type: String,
-    minlength: 3,
+    minlength: 2,
     maxlength: 280,
     required: true
   }
