@@ -1,1 +1,12 @@
 $font-sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+  line-height: inherit;
+  &:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+}
