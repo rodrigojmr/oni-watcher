@@ -21,7 +21,6 @@ const generateId = length => {
   return token;
 };
 
-
 const transport = nodemailer.createTransport({
   service: 'Gmail',
   auth: {
@@ -31,21 +30,22 @@ const transport = nodemailer.createTransport({
 });
 
 function sendMail(user) {
-  transport.sendMail ({
-    from: 'Anime Site" <process.env.NODEMAILER_EMAIL>', 
-    to: `${user.email}`, 
-    subject: 'Confirmation email', 
-    html: `<b>Hello!</b>
-    please confirm your email clicking <a href="http://localhost:3000/confirm-email/${user.confirmationToken}">here</a>` 
-  })
-  .then(result => {
-    console.log('Email was sent.');
-    console.log(result);
-})
-.catch(error => {
-    console.log('There was an error sending email');
-    console.log(error);
-});
+  transport
+    .sendMail({
+      from: 'Anime Site" <process.env.NODEMAILER_EMAIL>',
+      to: `${user.email}`,
+      subject: 'Confirmation email',
+      html: `<b>Hello!</b>
+    please confirm your email clicking <a href="http://localhost:3000/confirm-email/${user.confirmationToken}">here</a>`
+    })
+    .then(result => {
+      console.log('Email was sent.');
+      console.log(result);
+    })
+    .catch(error => {
+      console.log('There was an error sending email');
+      console.log(error);
+    });
 }
 
 router.get('/confirm-email/:mailToken', (req, res, next) => {
@@ -58,8 +58,6 @@ router.get('/confirm-email/:mailToken', (req, res, next) => {
     .catch(err => next(err));
 });
 
-
-
 passport.use(
   'local-sign-up',
   new LocalStrategy(
@@ -68,7 +66,7 @@ passport.use(
       passReqToCallback: true
     },
     (req, email, password, callback) => {
-      const name = req.body.name;
+      const username = req.body.username;
       const role = req.body.role;
       const confirmToken = generateId(10);
 
@@ -76,7 +74,7 @@ passport.use(
         .hash(password, 10)
         .then(hash => {
           return User.create({
-            name,
+            username,
             email,
             role,
             passwordHash: hash,
@@ -85,8 +83,7 @@ passport.use(
         })
         .then(user => {
           sendMail(user);
-          if (user) 
-          callback(null, user);
+          if (user) callback(null, user);
         })
         .catch(error => {
           callback(error);
@@ -94,8 +91,6 @@ passport.use(
     }
   )
 );
-
-
 
 passport.use(
   'local-sign-in',
@@ -108,8 +103,8 @@ passport.use(
         if (!document) {
           return Promise.reject(new Error("There's no user with that email."));
         } else {
-        user = document;
-        return bcryptjs.compare(password, user.passwordHash);
+          user = document;
+          return bcryptjs.compare(password, user.passwordHash);
         }
       })
       .then(result => {
