@@ -64,7 +64,6 @@ passport.use(
       });
   })
 );
-
 passport.serializeUser((user, callback) => {
   callback(null, user._id);
 });

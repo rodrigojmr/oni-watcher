@@ -22,7 +22,8 @@ router.post(
   '/sign-in',
   passport.authenticate('local-sign-in', {
     successRedirect: '/profile',
-    failureRedirect: '/sign-in'
+    failureRedirect: '/sign-in',
+    failureFlash: 'Wrong username or password'
   })
 );
 
