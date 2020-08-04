@@ -14,9 +14,13 @@ router.get('/profile', routeGuard, (req, res, next) => {
 
 const roleRouteGuard = require('./../middleware/role-route-guard');
 
-router.get('/User', routeGuard, roleRouteGuard(['User', 'Moderator']), (req, res, next) => {
-  res.render('User');
-});
-
+router.get(
+  '/User',
+  routeGuard,
+  roleRouteGuard(['User', 'Moderator']),
+  (req, res, next) => {
+    res.render('User');
+  }
+);
 
 module.exports = router;

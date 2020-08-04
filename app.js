@@ -11,7 +11,6 @@ const mongoose = require('mongoose');
 const sassMiddleware = require('node-sass-middleware');
 const serveFavicon = require('serve-favicon');
 
-
 const bindUserToViewLocals = require('./middleware/bind-user-to-view-locals.js');
 
 const indexRouter = require('./routes/index');
@@ -33,7 +32,6 @@ app.use(
   sassMiddleware({
     src: join(__dirname, '/sass'),
     dest: join(__dirname, '/public/styles'),
-    debug: true,
     outputStyle:
       process.env.NODE_ENV === 'development' ? 'nested' : 'compressed',
     force: process.env.NODE_ENV === 'development',

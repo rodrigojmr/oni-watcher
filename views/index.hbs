@@ -5,11 +5,3 @@
   <label for="search__name-input" class="search__name-label"></label>
   <input name="name" id="search__name-input" class="search__input" placeholder="Search for Anime"></input>
 </form>
-
-
-{{#each anime}}
-<img src="{{posterImage.original}}">
-<a href="http://kitsu.io/anime/{{slug}}"><p>{{canonicalTitle}}</p></a>
-<p>{{year}} - {{season}} - {{episodeCount}} episodes</p>
-<p>{{synopsis}}</p>
-{{/each}}
