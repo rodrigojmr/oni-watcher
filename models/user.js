@@ -1,6 +1,7 @@
 'use strict';
 
 const mongoose = require('mongoose');
+
 var uniqueValidator = require('mongoose-unique-validator');
 
 const schema = new mongoose.Schema({
@@ -14,7 +15,7 @@ const schema = new mongoose.Schema({
     type: String,
     required: [true, 'Email is required.'],
     match: [/^\S+@\S+\.\S+$/, 'Please use a unique email address.'],
-    unique: true, 
+    unique: true,
     lowercase: true,
     trim: true
   },
@@ -23,14 +24,26 @@ const schema = new mongoose.Schema({
   },
   role: {
     type: String,
-    enum: ["User", "Moderator"],
+    enum: ['User', 'Moderator'],
     required: true,
-    default: "User"
-  }, 
+    default: 'User'
+  },
   passwordHash: {
     type: String,
     required: [true, 'Password is required.']
+  },
+  comments: {
+    id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Comment'
+    }
+  },
+  posts: {
+    id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Post'
+    }
   }
 });
-schema.plugin(uniqueValidator, { message: '{PATH} already exists!'});
+schema.plugin(uniqueValidator, { message: '{PATH} already exists!' });
 module.exports = mongoose.model('User', schema);
