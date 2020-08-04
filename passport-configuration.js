@@ -51,11 +51,18 @@ function sendMail(user) {
 router.get('/confirm-email/:mailToken', (req, res, next) => {
   const mailToken = req.params.passport.mailToken;
   User.findOneAndUpdate({ confirmationToken: mailToken }, { status: 'Active' })
-    .then(user => {
-      req.session.user = user._id;
-      res.redirect('/success');
-    })
-    .catch(err => next(err));
+  .then(user => {
+    console.log("USER", user)
+    req.session.user = user._id;
+    res.redirect("/success");
+  })
+  .catch(error => {
+    next(error);
+  });
+});
+
+router.get("/success", (req, res, next) => {
+  res.render("success");
 });
 
 passport.use(
@@ -83,6 +90,7 @@ passport.use(
         })
         .then(user => {
           sendMail(user);
+          req.session.user = user._id;
           if (user) callback(null, user);
         })
         .catch(error => {

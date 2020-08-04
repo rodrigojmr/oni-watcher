@@ -14,10 +14,10 @@ profileRouter.get('/settings', routeGuard, (request, response, next) => {
 });
 
 profileRouter.post('/settings', routeGuard, (req, res, next) => {
-  const { name, email } = req.body;
+  const { username, email } = req.body;
   const _id = ObjectID(req.session.passport.user);
 
-  User.updateOne({ _id }, { $set: { name, email} }, (err) => {
+  User.updateOne({ _id }, { $set: { username, email} }, (err) => {
     if (err) {
       throw err;
     }
