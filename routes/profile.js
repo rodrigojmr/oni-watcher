@@ -24,7 +24,7 @@ profileRouter.post('/settings', routeGuard, (req, res, next) => {
   });
 });
 
-profileRouter.get('/:username', routeGuard, (req, res) => {
+profileRouter.get('/:username', (req, res) => {
   const username = req.params.username;
   User.findOne({ username }).then(user => {
     res.render('profile/display', { user });
