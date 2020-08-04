@@ -3,7 +3,6 @@
 const { Router } = require('express');
 const searchRouter = new Router();
 const Kitsu = require('kitsu');
-
 const api = new Kitsu();
 
 const setSeason = month => {
@@ -34,19 +33,24 @@ searchRouter.post('/', async (req, res, next) => {
     const { data } = await api.get('anime', {
       filter: {
         text: name
-      }
+      },
+      include: 'genres'
     });
     for (const anime of data) {
       const month = parseInt(anime.startDate.split('-')[1]);
-
       anime.year = anime.startDate.split('-')[0];
       anime.season = setSeason(month);
     }
-    // console.log(data);
-    res.render('index', { anime: data });
+
+    console.log('data: ', data[0]);
+    res.render('search', { anime: data });
   } catch (error) {
     next(error);
   }
+});
+
+searchRouter.get('/', (req, res, next) => {
+  res.render('search', { title: 'This is now search page' });
 });
 
 module.exports = searchRouter;
