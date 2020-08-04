@@ -1,13 +1,23 @@
 
 
 <h1>Profile</h1>
-<p>This page should only be accessible to authenticated users.</p>
 
-
-<span><strong>Name</strong>: {{user.username}}</span>
+<span><strong>Name</strong>: {{userPublic.username}}</span>
 <br />
-<span><strong>Email</strong>: {{user.email}}</span>
+<span><strong>Email</strong>: {{userPublic.email}}</span>
 
-<p>
-<a href="/profile/settings">Edit Profile</a>
-</p>
+{{#each userPublic.feed}}
+<p>{{title}}</p>
+<p>{{content}}</p>
+{{/each}}
+{{#if user}}
+<div class="comments">
+  <form method="POST" action="/profile/{{userPublic.username}}/post" class="post-form">
+    <label for="input-title"></label>
+    <input id="input-title" name="title" placeholder="Title"></input>
+    <label for="input-content">Post</label>
+    <textarea id="input-content" name="content" placeholder="Write your post..."></textarea>
+    <button type="submit">Submit</button>
+  </form>
+</div>
+{{/if}}

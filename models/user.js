@@ -40,18 +40,24 @@ const schema = new mongoose.Schema({
   confirmationToken: {
     type: String
   },
-  comments: {
-    id: {
+  comments: [
+    {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Comment'
     }
-  },
-  posts: {
-    id: {
+  ],
+  posts: [
+    {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Post'
     }
-  }
+  ],
+  feed: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Post'
+    }
+  ]
 });
 schema.plugin(uniqueValidator, { message: '{PATH} already exists!' });
 module.exports = mongoose.model('User', schema);
