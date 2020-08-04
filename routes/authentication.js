@@ -6,29 +6,6 @@ const router = new Router();
 const passport = require('passport');
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 router.get('/sign-up', (req, res) => res.render('sign-up', { title: 'Register here' }));
 
 router.post(
