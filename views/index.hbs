@@ -6,8 +6,6 @@
   <input name="name" id="search__name-input" class="search__input" placeholder="Search for Anime"></input>
 </form>
 
-{{#if anime}}
 {{#each anime}}
-<p>{{attributes.canonicalTitle}}</p>
+<p>{{canonicalTitle}}</p>
 {{/each}}
-{{/if}}
