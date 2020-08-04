@@ -9,7 +9,7 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/profile', routeGuard, (req, res, next) => {
-  res.render('profile');
+  res.render('profile/display');
 });
 
 const roleRouteGuard = require('./../middleware/role-route-guard');

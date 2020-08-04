@@ -31,10 +31,6 @@ const schema = new mongoose.Schema({
     type: String,
     required: [true, 'Password is required.']
   }
-},
-{
-  timestamps: true
-}
-);
+});
 schema.plugin(uniqueValidator, { message: '{PATH} already exists!'});
 module.exports = mongoose.model('User', schema);
