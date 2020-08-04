@@ -1,14 +1,30 @@
-nav {
+.nav {
   display: flex;
-  a,
-  button {
-    padding: 1em 0;
-    border: 0;
-    &:not(:last-child) {
-      margin-right: 1em;
-    }
-    &:first-child {
-      margin-right: auto;
-    }
+  padding: 1em 0;
+}
+
+.profile-dropdown__link {
+  width: 100%;
+  padding: 10px 20px;
+  border: 0;
+}
+
+.profile {
+  margin-left: auto;
+  position: relative;
+}
+
+.profile-dropdown {
+  text-align: center;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: rgb(238, 238, 238);
+  z-index: 100;
+  min-width: 120px;
+  color: #333;
+
+  > * {
+    display: block;
   }
 }

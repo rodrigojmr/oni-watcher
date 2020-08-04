@@ -2,7 +2,7 @@
 
 const mongoose = require('mongoose');
 
-var uniqueValidator = require('mongoose-unique-validator');
+const uniqueValidator = require('mongoose-unique-validator');
 
 const schema = new mongoose.Schema({
   name: {
@@ -37,9 +37,9 @@ const schema = new mongoose.Schema({
     enum: ['Pending confirmation', 'Active'],
     default: 'Pending confirmation'
   },
-  confirmationToken: { 
-   type: String  
-  }, 
+  confirmationToken: {
+    type: String
+  },
   comments: {
     id: {
       type: mongoose.Schema.Types.ObjectId,
