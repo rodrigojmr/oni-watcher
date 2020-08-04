@@ -29,8 +29,9 @@ app.set('view engine', 'hbs');
 app.use(serveFavicon(join(__dirname, 'public/images', 'favicon.ico')));
 app.use(
   sassMiddleware({
-    src: join(__dirname, 'public'),
-    dest: join(__dirname, 'public'),
+    src: join(__dirname, '/sass'),
+    dest: join(__dirname, '/public/styles'),
+    debug: true,
     outputStyle:
       process.env.NODE_ENV === 'development' ? 'nested' : 'compressed',
     force: process.env.NODE_ENV === 'development',
