@@ -2,21 +2,21 @@
 
 const { Router } = require('express');
 const searchRouter = new Router();
-const axios = require('axios');
-const { res } = require('../app');
+const Kitsu = require('kitsu');
 
-axios.defaults.headers.common['Accept'] = 'application/vnd.api+json';
-axios.defaults.headers.common['Content-Type'] = 'application/vnd.api+json';
+const api = new Kitsu();
 
 searchRouter.post('/', async (req, res, next) => {
   const { name } = req.body;
-  const url = `https://kitsu.io/api/edge/anime?canonicalTitle=${name}`;
 
   try {
-    const result = await axios.get(url);
-    const anime = result.data.data;
-    console.log('result.data.data: ', result.data.data);
-    res.render('index', { anime: anime });
+    const { data } = await api.get('anime', {
+      filter: {
+        text: name
+      }
+    });
+    console.log(data);
+    res.render('index', { anime: data });
   } catch (error) {
     next(error);
   }
