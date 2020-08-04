@@ -17,11 +17,12 @@ profileRouter.post('/settings', routeGuard, async (req, res) => {
   const { username, email } = req.body;
   const _id = ObjectID(req.session.passport.user);
 
-  await User.updateOne({ _id }, { $set: { username, email } }, err => {
+  User.updateOne({ _id }, { $set: { username, email } }, err => {
     if (err) {
       throw err;
     }
-    res.redirect('/profile/settings');
+
+    res.redirect('/profile/');
   });
 });
 

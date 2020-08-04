@@ -11,53 +11,6 @@ dotenv.config();
 
 const nodemailer = require('nodemailer');
 
-const generateId = length => {
-  const characters =
-    '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  let token = '';
-  for (let i = 0; i < length; i++) {
-    token += characters[Math.floor(Math.random() * characters.length)];
-  }
-  return token;
-};
-
-const transport = nodemailer.createTransport({
-  service: 'Gmail',
-  auth: {
-    user: process.env.NODEMAILER_EMAIL,
-    pass: process.env.NODEMAILER_PASSWORD
-  }
-});
-
-function sendMail(user) {
-  transport
-    .sendMail({
-      from: 'Anime Site" <process.env.NODEMAILER_EMAIL>',
-      to: `${user.email}`,
-      subject: 'Confirmation email',
-      html: `<b>Hello!</b>
-    please confirm your email clicking <a href="http://localhost:3000/confirm-email/${user.confirmationToken}">here</a>`
-    })
-    .then(result => {
-      console.log('Email was sent.');
-      console.log(result);
-    })
-    .catch(error => {
-      console.log('There was an error sending email');
-      console.log(error);
-    });
-}
-
-router.get('/confirm-email/:mailToken', (req, res, next) => {
-  const mailToken = req.params.passport.mailToken;
-  User.findOneAndUpdate({ confirmationToken: mailToken }, { status: 'Active' })
-    .then(user => {
-      req.session.user = user._id;
-      res.redirect('/success');
-    })
-    .catch(err => next(err));
-});
-
 passport.use(
   'local-sign-up',
   new LocalStrategy(
@@ -83,6 +36,7 @@ passport.use(
         })
         .then(user => {
           sendMail(user);
+          req.session.user = user._id;
           if (user) callback(null, user);
         })
         .catch(error => {
@@ -91,6 +45,61 @@ passport.use(
     }
   )
 );
+
+const generateId = length => {
+  const characters =
+    '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  let token = '';
+  for (let i = 0; i < length; i++) {
+    token += characters[Math.floor(Math.random() * characters.length)];
+  }
+  return token;
+};
+
+const transport = nodemailer.createTransport({
+  service: 'Gmail',
+  auth: {
+    user: process.env.NODEMAILER_EMAIL,
+    pass: process.env.NODEMAILER_PASSWORD
+  }
+});
+
+function sendMail(user) {
+  transport
+    .sendMail({
+      from: 'Anime Site" <process.env.NODEMAILER_EMAIL>',
+      to: `${user.email}`,
+      subject: 'Confirmation email',
+      html: `<b>Hello!</b>
+    please confirm your email clicking <a href="http://localhost:3000/confirm?token=${user.confirmationToken}">here</a>`
+    })
+    .then(result => {
+      console.log('Email was sent.');
+      console.log(result);
+    })
+    .catch(error => {
+      console.log('There was an error sending email');
+      console.log(error);
+    });
+}
+
+router.get('/confirmation/:token', (req, res, next) => {
+  const token = req.query.mailToken;
+  User.findOneAndUpdate({ confirmationToken: token }, { status: 'Active' })
+  .then(user =>  {
+    if (!user) {
+      return Promise.reject(
+        new Error('Confirmation unsuccessful. Please try again.')
+      );
+    } else {
+      console.log({ user });
+      res.render('/views/confirmation.hbs', { user: user });
+    }
+  })
+  .catch(error => {
+    next(error);
+  });
+});
 
 passport.use(
   'local-sign-in',

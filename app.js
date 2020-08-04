@@ -70,6 +70,7 @@ app.use('/profile', profileRouter);
 app.use('/search', searchRouter);
 app.use('/anime', animeRouter);
 
+
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => {
   next(createError(404));
