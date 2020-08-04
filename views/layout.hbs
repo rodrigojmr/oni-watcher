@@ -8,13 +8,19 @@
     <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
-    <nav>
-      <a href="/">Home</a>
+    <nav class="nav">
+      <a class="nav__link" href="/">Home</a>
+        <div class="profile">
       {{#if user}}
-        <a href="/profile/{{ user._id }}">{{user.name}}'s Profile</a>
-        <form action="/authentication/sign-out" method="POST">
-          <button>Sign Out</button>
-        </form>
+          <a class="profile__icon" href="/profile/{{ user._id }}">{{user.name}}'s Profile</a>
+          <div class="profile-dropdown">
+            {{!-- <a href="/profile/{{set name here}}" class="profile-dropdown__link"></a> --}}
+            <a href="/profile/settings" class="profile-dropdown__link">Settings</a>
+            <form action="/authentication/sign-out" method="POST">
+              <button class="profile-dropdown__link">Sign Out</button>
+            </form>
+          </div>
+        </div>
         {{else}}
         <a href="/authentication/sign-in">Sign In</a>
         <a href="/authentication/sign-up">Sign Up</a>

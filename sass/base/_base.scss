@@ -48,22 +48,27 @@ img {
   max-width: 100%;
 }
 
-form {
+.form {
   display: flex;
   flex-direction: column;
+
+  &__input,
+  &__textarea,
+  &__btn {
+    padding: 1em;
+    border: 1px solid #333;
+    border-radius: 0;
+    margin-bottom: 1em;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+  }
 }
 
 input,
 textarea,
 button,
 .btn {
-  padding: 1em;
-  border: 1px solid #333;
-  border-radius: 0;
-  margin-bottom: 1em;
-  font: inherit;
-  color: inherit;
-  background-color: transparent;
 }
 
 textarea {
