@@ -9,11 +9,11 @@ const routeGuard = require('./../middleware/route-guard');
 
 const profileRouter = new express.Router();
 
-profileRouter.get('/edit', routeGuard, (request, response, next) => {
-  response.render('profile/edit');
+profileRouter.get('/settings', routeGuard, (request, response, next) => {
+  response.render('profile/settings');
 });
 
-profileRouter.post('/edit', routeGuard, (req, res, next) => {
+profileRouter.post('/settings', routeGuard, (req, res, next) => {
   const { name, email } = req.body;
   const _id = ObjectID(req.session.passport.user);
 
