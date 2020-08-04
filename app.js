@@ -8,17 +8,18 @@ const cookieParser = require('cookie-parser');
 const expressSession = require('express-session');
 const logger = require('morgan');
 const mongoose = require('mongoose');
-const passport = require('passport');
 const sassMiddleware = require('node-sass-middleware');
 const serveFavicon = require('serve-favicon');
+
 const bindUserToViewLocals = require('./middleware/bind-user-to-view-locals.js');
-const passportConfigure = require('./passport-configuration.js');
+
 const indexRouter = require('./routes/index');
 const authenticationRouter = require('./routes/authentication');
 const profileRouter = require('./routes/profile');
-
-
 const searchRouter = require('./routes/search');
+
+const passport = require('passport');
+require('./passport-configuration.js');
 
 const app = express();
 
@@ -64,7 +65,7 @@ app.use(bindUserToViewLocals);
 app.use('/', indexRouter);
 app.use('/authentication', authenticationRouter);
 app.use('/profile', profileRouter);
-app.use('/', searchRouter);
+app.use('/search', searchRouter);
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => {
