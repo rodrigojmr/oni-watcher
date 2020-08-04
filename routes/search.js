@@ -15,7 +15,7 @@ searchRouter.post('/', async (req, res, next) => {
         text: name
       }
     });
-    for (let anime of data) {
+    for (const anime of data) {
       anime.year = anime.startDate.split('-')[0];
 
       const month = parseInt(anime.startDate.split('-')[1]);

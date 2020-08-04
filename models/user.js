@@ -2,7 +2,7 @@
 
 const mongoose = require('mongoose');
 
-var uniqueValidator = require('mongoose-unique-validator');
+const uniqueValidator = require('mongoose-unique-validator');
 
 const schema = new mongoose.Schema({
   name: {
@@ -32,16 +32,14 @@ const schema = new mongoose.Schema({
     type: String,
     required: [true, 'Password is required.']
   },
-<<<<<<< HEAD
   status: {
     type: String,
     enum: ['Pending confirmation', 'Active'],
     default: 'Pending confirmation'
   },
-  confirmationToken: { 
-   type: String  
-  } 
-=======
+  confirmationToken: {
+    type: String
+  },
   comments: {
     id: {
       type: mongoose.Schema.Types.ObjectId,
@@ -54,7 +52,6 @@ const schema = new mongoose.Schema({
       ref: 'Post'
     }
   }
->>>>>>> 91a3870a661bd35efc21adb76bae1c9588a08c6d
 });
 schema.plugin(uniqueValidator, { message: '{PATH} already exists!' });
 module.exports = mongoose.model('User', schema);
