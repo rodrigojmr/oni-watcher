@@ -11,12 +11,12 @@ const mongoose = require('mongoose');
 const sassMiddleware = require('node-sass-middleware');
 const serveFavicon = require('serve-favicon');
 
+
 const bindUserToViewLocals = require('./middleware/bind-user-to-view-locals.js');
 
 const indexRouter = require('./routes/index');
 const authenticationRouter = require('./routes/authentication');
 const profileRouter = require('./routes/profile');
-const flash = require('connect-flash');
 
 const searchRouter = require('./routes/search');
 
@@ -64,7 +64,6 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(bindUserToViewLocals);
-app.use(flash());
 
 app.use('/', indexRouter);
 app.use('/authentication', authenticationRouter);

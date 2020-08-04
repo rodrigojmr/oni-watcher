@@ -1,10 +1,33 @@
 'use strict';
 
 const { Router } = require('express');
+const router = new Router();
 
 const passport = require('passport');
 
-const router = new Router();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 router.get('/sign-up', (req, res) => res.render('sign-up', { title: 'Register here' }));
 
@@ -13,6 +36,7 @@ router.post(
   passport.authenticate('local-sign-up', {
     successRedirect: '/profile',
     failureRedirect: '/sign-up'
+  
   })
 );
 
@@ -22,7 +46,7 @@ router.post(
   '/sign-in',
   passport.authenticate('local-sign-in', {
     successRedirect: '/profile',
-    failureRedirect: '/sign-in'
+    failureRedirect: '/sign-in',
   })
 );
 
@@ -30,5 +54,6 @@ router.post('/sign-out', (req, res, next) => {
   req.logout();
   res.redirect('/');
 });
+
 
 module.exports = router;

@@ -30,7 +30,15 @@ const schema = new mongoose.Schema({
   passwordHash: {
     type: String,
     required: [true, 'Password is required.']
-  }
+  },
+  status: {
+    type: String,
+    enum: ['Pending confirmation', 'Active'],
+    default: 'Pending confirmation'
+  },
+  confirmationToken: { 
+   type: String  
+  } 
 });
 schema.plugin(uniqueValidator, { message: '{PATH} already exists!'});
 module.exports = mongoose.model('User', schema);
