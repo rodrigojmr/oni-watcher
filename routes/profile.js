@@ -17,11 +17,13 @@ profileRouter.post('/edit', routeGuard, (req, res, next) => {
   const { name, email } = req.body;
   const _id = ObjectID(req.session.passport.user);
 
-  User.updateOne({ _id }, { $set: { name, email } }, (err) => {
+  User.updateOne({ _id }, { $set: { name, email} }, (err) => {
     if (err) {
       throw err;
     }
-    res.redirect('/profile'); 
+    
+    res.redirect('/profile/');
+      
     });
 });
 

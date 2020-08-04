@@ -8,17 +8,20 @@ const cookieParser = require('cookie-parser');
 const expressSession = require('express-session');
 const logger = require('morgan');
 const mongoose = require('mongoose');
-const passport = require('passport');
 const sassMiddleware = require('node-sass-middleware');
 const serveFavicon = require('serve-favicon');
+
 const bindUserToViewLocals = require('./middleware/bind-user-to-view-locals.js');
-const passportConfigure = require('./passport-configuration.js');
+
 const indexRouter = require('./routes/index');
 const authenticationRouter = require('./routes/authentication');
 const profileRouter = require('./routes/profile');
 const flash = require('connect-flash');
 
 const searchRouter = require('./routes/search');
+
+const passport = require('passport');
+require('./passport-configuration.js');
 
 const app = express();
 
@@ -28,8 +31,9 @@ app.set('view engine', 'hbs');
 app.use(serveFavicon(join(__dirname, 'public/images', 'favicon.ico')));
 app.use(
   sassMiddleware({
-    src: join(__dirname, 'public'),
-    dest: join(__dirname, 'public'),
+    src: join(__dirname, '/sass'),
+    dest: join(__dirname, '/public/styles'),
+    debug: true,
     outputStyle:
       process.env.NODE_ENV === 'development' ? 'nested' : 'compressed',
     force: process.env.NODE_ENV === 'development',
@@ -65,7 +69,7 @@ app.use(flash());
 app.use('/', indexRouter);
 app.use('/authentication', authenticationRouter);
 app.use('/profile', profileRouter);
-app.use('/', searchRouter);
+app.use('/search', searchRouter);
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => {

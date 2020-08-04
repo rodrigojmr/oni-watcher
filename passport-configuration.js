@@ -39,8 +39,6 @@ passport.use(
   )
 );
 
-
-
 passport.use(
   'local-sign-in',
   new LocalStrategy({ usernameField: 'email' }, (email, password, callback) => {
@@ -64,6 +62,7 @@ passport.use(
       });
   })
 );
+
 passport.serializeUser((user, callback) => {
   callback(null, user._id);
 });
