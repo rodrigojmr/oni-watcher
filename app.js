@@ -68,6 +68,7 @@ app.use('/authentication', authenticationRouter);
 app.use('/profile', profileRouter);
 app.use('/search', searchRouter);
 
+
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => {
   next(createError(404));
