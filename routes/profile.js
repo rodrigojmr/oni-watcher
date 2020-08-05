@@ -5,6 +5,8 @@ const User = require('./../models/user');
 const Post = require('./../models/post');
 const ObjectID = require('mongodb').ObjectID;
 
+const LibEntry = require('../models/library');
+
 const routeGuard = require('./../middleware/route-guard');
 
 const profileRouter = new express.Router();
@@ -25,14 +27,25 @@ profileRouter.post('/settings', routeGuard, async (req, res) => {
   });
 });
 
-profileRouter.get('/:username', (req, res) => {
+profileRouter.get('/:username', async (req, res, next) => {
   const username = req.params.username;
-  User.findOne({ username })
-    .populate('post')
-    .populate('feed')
-    .then(userPublic => {
-      res.render('profile/display', { userPublic });
-    });
+
+  try {
+    const userPublic = await User.findOne({ username }).populate('post feed');
+
+    const userLibrary = await LibEntry.find({ user: userPublic._id }).populate(
+      'anime'
+    );
+
+    const data = {
+      userPublic: userPublic,
+      library: userLibrary
+    };
+
+    res.render('profile/display', data);
+  } catch (error) {
+    next(error);
+  }
 });
 
 profileRouter.post('/:username/post', async (req, res, next) => {

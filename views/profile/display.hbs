@@ -1,21 +1,62 @@
-<h1>Profile</h1>
-
-<span><strong>Name</strong>: {{userPublic.username}}</span>
+<h1>
+  Profile
+</h1>
+<span>
+  <strong>
+    Name
+  </strong>
+  :
+  {{userPublic.username}}
+</span>
 <br />
-<span><strong>Email</strong>: {{userPublic.email}}</span>
-
+<span>
+  <strong>
+    Email
+  </strong>
+  :
+  {{userPublic.email}}
+</span>
+<div class="library">
+  {{#each library}}
+    <div class="library-entry">
+      <img src="{{anime.poster}}" class="library-entry__img">
+      <p class="library-entry__name">{{anime.name}}</p>
+      <p class="library-entry__rating">{{rating}}</p>
+      <p class="library-entry__type">{{anime.type}}</p>
+      <div class="library-entry__progress">
+        <p class="library-entry__name">{{progress}}</p> / {{anime.length}}
+      </div>
+    </div>
+  {{/each}}
+</div>
 {{#each userPublic.feed}}
-<p>{{title}}</p>
-<p>{{content}}</p>
+  <p>
+    {{title}}
+  </p>
+  <p>
+    {{content}}
+  </p>
 {{/each}}
 {{#if user}}
-<div class="comments">
-  <form method="POST" action="/profile/{{userPublic.username}}/post" class="post-form">
-    <label for="input-title"></label>
-    <input id="input-title" name="title" placeholder="Title"></input>
-    <label for="input-content">Post</label>
-    <textarea id="input-content" name="content" placeholder="Write your post..."></textarea>
-    <button type="submit">Submit</button>
-  </form>
-</div>
+  <div class="comments">
+    <form
+      method="POST"
+      action="/profile/{{userPublic.username}}/post"
+      class="post-form"
+    >
+      <label for="input-title"></label>
+      <input id="input-title" name="title" placeholder="Title" />
+      <label for="input-content">
+        Post
+      </label>
+      <textarea
+        id="input-content"
+        name="content"
+        placeholder="Write your post..."
+      ></textarea>
+      <button type="submit">
+        Submit
+      </button>
+    </form>
+  </div>
 {{/if}}

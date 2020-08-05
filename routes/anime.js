@@ -52,7 +52,8 @@ animeRouter.post('/:slug', async (req, res, next) => {
       name: anime.canonicalTitle,
       poster: anime.posterImage.small,
       type: anime.showType,
-      length: anime.episodeLength
+      length: anime.episodeLength,
+      slug: anime.slug
     });
 
     const libraryEntry = LibEntry.create({
