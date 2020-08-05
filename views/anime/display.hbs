@@ -2,3 +2,42 @@
 <a href="/anime/{{anime.slug}}"><p>{{anime.canonicalTitle}}</p></a>
 <p>{{anime.year}} - {{anime.season}} - {{anime.episodeCount}} episodes</p>
 <p>{{anime.synopsis}}</p>
+
+{{#if user}}
+<div class="library-entry">
+  <form method="POST">
+    <div>
+      <label for="input-status">Status:</label>
+      <select name="status" id="input-status">
+        <option value="plan-to-watch" selected>Plan to Watch</option>
+        <option value="currently-watching">Currently Watching</option>
+        <option value="on-hold">On Hold</option>
+        <option value="dropped">Dropped</option>
+        <option value="completed">Completed</option>
+      </select>
+    </div>
+    <div>
+      <label for="input-progress">Progress:</label>
+      <input type="number" name="progress" id="input-progress"> / {{ anime.episodeLength }}
+      </div>
+    <div>
+      <label for="input-rating">input-rating</label>
+      <select name="rating" id="input-rating">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+      </select>
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+</div>
+{{else}}
+<a href="/authentication/sign-up">Sign up to add to your library!</a>
+{{/if}}
