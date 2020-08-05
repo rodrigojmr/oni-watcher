@@ -12,6 +12,7 @@
       <a class="nav__link" href="/">Home</a>
         <div class="profile">
       {{#if user}}
+       <img class="avatar" src="{{user.avatar}}">
           <a class="profile__icon" href="/profile/{{ user.username }}">{{user.username}}'s Profile</a>
           <div class="profile-dropdown">
             {{!-- <a href="/profile/{{set name here}}" class="profile-dropdown__link"></a> --}}

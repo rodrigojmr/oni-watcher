@@ -3,7 +3,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const User = require('./models/user');
 const bcryptjs = require('bcryptjs');
-
+//const fileUploader = require('../cloudinary-configuration');
 
       
 const generateId = length => {
@@ -30,13 +30,12 @@ passport.use(
       bcryptjs
         .hash(password, 10)
         .then(hash => {
-          const userParams = req.body;
-          userParams.avatar = req.file ? `/uploads/${req.file.filename}` : undefined;
+    
           return User.create({
             username,
             email,
             role,
-            avatar: userParams.avatar,
+       
             passwordHash: hash,
             confirmationCode: confirmToken
           });
