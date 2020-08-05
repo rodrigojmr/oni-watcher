@@ -33,8 +33,6 @@ profileRouter.post('/settings',fileUploader.single('user-avatar'), (req, res, ne
 });
 */
 
-
-
 profileRouter.get('/:username', async (req, res, next) => {
   const username = req.params.username;
 
