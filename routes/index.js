@@ -8,12 +8,6 @@ router.get('/', (req, res, next) => {
   res.render('index', { title: 'Hello World!' });
 });
 
-/*
-router.get('/confirmed', (req, res, next) => {
-  res.render('confirmed');
-  console.log(req.user);
-});
-*/
 
 const roleRouteGuard = require('./../middleware/role-route-guard');
 

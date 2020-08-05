@@ -11,6 +11,8 @@
 <p>{{content}}</p>
 {{/each}}
 {{#if user}}
+   <img class="user-avatar" src="{{user.avatar}}" alt="{{user.username}}'s image">
+
 <div class="comments">
   <form method="POST" action="/profile/{{userPublic.username}}/post" class="post-form">
     <label for="input-title"></label>

@@ -4,8 +4,8 @@ const express = require('express');
 const User = require('./../models/user');
 const Post = require('./../models/post');
 const ObjectID = require('mongodb').ObjectID;
-
 const routeGuard = require('./../middleware/route-guard');
+const fileUploader = require('../cloudinary-configuration');
 
 const profileRouter = new express.Router();
 
@@ -13,17 +13,26 @@ profileRouter.get('/settings', routeGuard, (request, response) => {
   response.render('profile/settings');
 });
 
-profileRouter.post('/settings', routeGuard, async (req, res) => {
-  const { username, email } = req.body;
+profileRouter.post('/settings', routeGuard, fileUploader.single('user-avatar'), async (req, res) => {
+  const { username, email, avatar } = req.body;
   const _id = ObjectID(req.session.passport.user);
 
-  User.updateOne({ _id }, { $set: { username, email } }, error => {
+  User.updateOne({ _id }, { $set: { username, email, avatar } }, error => {
     if (error) {
       throw error;
     }
     res.redirect(`/profile/${username}`);
   });
 });
+/*
+profileRouter.post('/settings',fileUploader.single('user-avatar'), (req, res, next) => {
+  const { username } = req.params;
+  console.log(username);
+  res.redirect(`/profile/${username}`);
+});
+*/
+
+
 
 profileRouter.get('/:username', (req, res) => {
   const username = req.params.username;
