@@ -9,25 +9,42 @@
   </head>
   <body>
     <nav class="nav">
-      <a class="nav__link" href="/">Home</a>
-        <div class="profile">
-      {{#if user}}
-       <img class="avatar" src="{{user.avatar}}">
-          <a class="profile__icon" href="/profile/{{ user.username }}">{{user.username}}'s Profile</a>
-          <div class="profile-dropdown">
-            {{!-- <a href="/profile/{{set name here}}" class="profile-dropdown__link"></a> --}}
-            <a href="/profile/settings" class="profile-dropdown__link">Settings</a>
-            <form action="/authentication/sign-out" method="POST">
-              <button class="profile-dropdown__link">Sign Out</button>
-            </form>
-          </div>
-        </div>
+      <img src="" alt="" class="nav__logo">
+      <a class="nav__logo" href="/">Home</a>
+      <div class="navigation">
+        <ul class="navigation__list">
+          <li class="navigation__item"><a href="/profile/{{user.username}}" class="navigation__link">Library</a></li>
+          <li class="navigation__item"><a href="/anime" class="navigation__link">Anime</a></li>
+          <li class="navigation__item"><a href="/feed" class="navigation__link">Feed</a></li>
+          <li class="navigation__item"><a href="/support" class="navigation__link">Support</a></li>
+        </ul>
+      </div>
+      <div class="profile">
+        {{#if user}}
+        <img class="avatar" src="{{user.avatar}}">
+            <a class="profile__icon" href="/profile/{{ user.username }}">{{user.username}}'s Profile</a>
+            <div class="profile-dropdown">
+              {{!-- <a href="/profile/{{set name here}}" class="profile-dropdown__link"></a> --}}
+              <a href="/profile/settings" class="profile-dropdown__link">Settings</a>
+              <form action="/authentication/sign-out" method="POST">
+                <button class="profile-dropdown__link">Sign Out</button>
+              </form>
+            </div>
         {{else}}
-        <a href="/authentication/sign-in">Sign In</a>
-        <a href="/authentication/sign-up">Sign Up</a>
-      {{/if}}
+        <a class="btn btn--white" href="/authentication/sign-in">Sign In</a>
+        <a class="btn btn--red" href="/authentication/sign-up">Sign Up</a>
+        {{/if}}
+      </div>
     </nav>
     {{{body}}}
     <script src="/scripts/script.js"></script>
+    <script>
+      document.write(
+        '<script src="http://' +
+          (location.host || '${1:localhost}').split(':')[0] +
+          ':${2:35729}/livereload.js?snipver=1"></' +
+          'script>'
+      );
+    </script>
   </body>
 </html>

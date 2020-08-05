@@ -1,6 +1,26 @@
 .nav {
   display: flex;
   padding: 1em 0;
+  padding-left: 5%;
+  padding-right: 5%;
+
+  &__logo {
+    margin-right: 2rem;
+  }
+}
+
+.navigation {
+  &__list {
+    list-style: none;
+    display: flex;
+  }
+  &__item {
+    display: inline-block;
+  }
+  &__link {
+    padding: 0.5rem 0.5rem;
+    margin: 0 1rem;
+  }
 }
 
 .profile-dropdown__link {
