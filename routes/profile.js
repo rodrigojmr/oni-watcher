@@ -10,19 +10,18 @@ const routeGuard = require('./../middleware/route-guard');
 const profileRouter = new express.Router();
 
 profileRouter.get('/settings', routeGuard, (request, response) => {
-  response.render('profile/edit');
+  response.render('profile/settings');
 });
 
 profileRouter.post('/settings', routeGuard, async (req, res) => {
   const { username, email } = req.body;
   const _id = ObjectID(req.session.passport.user);
 
-  User.updateOne({ _id }, { $set: { username, email } }, err => {
-    if (err) {
-      throw err;
+  User.updateOne({ _id }, { $set: { username, email } }, error => {
+    if (error) {
+      throw error;
     }
-
-    res.redirect('/profile/');
+    res.redirect(`/profile/${username}`);
   });
 });
 
