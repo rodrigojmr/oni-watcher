@@ -41,6 +41,12 @@ const schema = new mongoose.Schema({
     type: String,
     unique: true
   },
+  favorites: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Anime'
+    }
+  ],
   comments: [
     {
       type: mongoose.Schema.Types.ObjectId,

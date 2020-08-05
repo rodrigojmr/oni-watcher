@@ -17,6 +17,7 @@ const indexRouter = require('./routes/index');
 const authenticationRouter = require('./routes/authentication');
 const profileRouter = require('./routes/profile');
 const animeRouter = require('./routes/anime');
+const libraryRouter = require('./routes/library');
 
 const searchRouter = require('./routes/search');
 
@@ -64,12 +65,12 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(bindUserToViewLocals);
 
-app.use('/', indexRouter);
 app.use('/authentication', authenticationRouter);
 app.use('/profile', profileRouter);
 app.use('/search', searchRouter);
 app.use('/anime', animeRouter);
-
+app.use('/', libraryRouter);
+app.use('/', indexRouter);
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => {
