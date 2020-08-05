@@ -1,5 +1,6 @@
 .nav {
   display: flex;
+  align-items: center;
   padding: 1em 0;
   padding-left: 5%;
   padding-right: 5%;
@@ -20,6 +21,10 @@
   &__link {
     padding: 0.5rem 0.5rem;
     margin: 0 1rem;
+
+    &:hover {
+      color: $color-primary-light-2;
+    }
   }
 }
 

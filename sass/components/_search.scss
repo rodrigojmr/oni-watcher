@@ -1,0 +1,17 @@
+.search {
+  width: 100%;
+  display: flex;
+  input,
+  button {
+    padding: 1em 1.25em;
+    border: 1px solid black;
+  }
+  input {
+    border-radius: 25px 0 0 25px;
+  }
+  button {
+    border-radius: 0 25px 25px 0;
+    padding-right: 1.5em;
+    margin-left: -1px;
+  }
+}

@@ -2,6 +2,8 @@
   padding: 0.5rem 1rem;
   border-radius: 5px;
   cursor: pointer;
+  display: inline-block;
+  transition: all 0.2s ease;
 
   &--white {
     background-color: white;
@@ -17,5 +19,10 @@
     background-color: $color-primary;
     color: $color-secondary-light;
     border-color: $color-primary;
+
+    &:hover {
+      background-color: $color-primary-light-2;
+      border-color: $color-primary-light-2;
+    }
   }
 }

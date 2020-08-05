@@ -9,6 +9,7 @@ const expressSession = require('express-session');
 const logger = require('morgan');
 const mongoose = require('mongoose');
 const sassMiddleware = require('node-sass-middleware');
+const hbs = require('hbs');
 const serveFavicon = require('serve-favicon');
 
 const bindUserToViewLocals = require('./middleware/bind-user-to-view-locals.js');
@@ -18,7 +19,7 @@ const authenticationRouter = require('./routes/authentication');
 const profileRouter = require('./routes/profile');
 const animeRouter = require('./routes/anime');
 const libraryRouter = require('./routes/library');
-const passportRouter = require('./passport-configuration')
+const passportRouter = require('./passport-configuration');
 
 const searchRouter = require('./routes/search');
 
@@ -29,6 +30,8 @@ const app = express();
 
 app.set('views', join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+
+hbs.registerPartials(join(__dirname, 'views/partials'));
 
 app.use(serveFavicon(join(__dirname, 'public/images', 'favicon.ico')));
 app.use(
@@ -73,7 +76,6 @@ app.use('/anime', animeRouter);
 app.use('/', libraryRouter);
 app.use('/', indexRouter);
 app.use('/', passportRouter);
-
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => {
