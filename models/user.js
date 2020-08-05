@@ -35,7 +35,7 @@ const schema = new mongoose.Schema({
   status: {
     type: String,
     enum: ['Pending', 'Active'],
-    default: 'Pending confirmation'
+    default: 'Pending'
   },
   confirmationCode: {
     type: String,

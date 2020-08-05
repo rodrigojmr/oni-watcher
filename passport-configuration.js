@@ -25,16 +25,16 @@ passport.use(
     (req, email, password, callback) => {
       const username = req.body.username;
       const role = req.body.role;
+      const avatar = req.body.avatar;
       const confirmToken = generateId(20);
       bcryptjs
         .hash(password, 10)
         .then(hash => {
-    
           return User.create({
             username,
             email,
             role,
-       
+            avatar,
             passwordHash: hash,
             confirmationCode: confirmToken
           });
