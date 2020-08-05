@@ -33,13 +33,6 @@ profileRouter.post(
     });
   }
 );
-/*
-profileRouter.post('/settings',fileUploader.single('user-avatar'), (req, res, next) => {
-  const { username } = req.params;
-  console.log(username);
-  res.redirect(`/profile/${username}`);
-});
-*/
 
 profileRouter.get('/:username', async (req, res, next) => {
   const username = req.params.username;

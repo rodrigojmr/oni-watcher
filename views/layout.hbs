@@ -12,6 +12,9 @@
       <a class="nav__link" href="/">Home</a>
         <div class="profile">
       {{#if user}}
+      <a class="nav__link" href="/followers">Followers</a>
+      <a class="nav__link" href="/following">Following</a>
+      <a class="nav__link" href="/users">Users</a>
        <img class="avatar" src="{{user.avatar}}">
           <a class="profile__icon" href="/profile/{{ user.username }}">{{user.username}}'s Profile</a>
           <div class="profile-dropdown">

@@ -18,6 +18,7 @@ const authenticationRouter = require('./routes/authentication');
 const profileRouter = require('./routes/profile');
 const animeRouter = require('./routes/anime');
 const libraryRouter = require('./routes/library');
+const passportRouter = require('./passport-configuration')
 
 const searchRouter = require('./routes/search');
 
@@ -71,6 +72,8 @@ app.use('/search', searchRouter);
 app.use('/anime', animeRouter);
 app.use('/', libraryRouter);
 app.use('/', indexRouter);
+app.use('/', passportRouter);
+
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => {
