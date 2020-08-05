@@ -64,7 +64,19 @@ const schema = new mongoose.Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Post'
     }
-  ]
-});
+  ], 
+  followers: [ {type: Number
+  }
+  ],
+  following: [
+    {
+    type: Number
+  }
+]
+  }, 
+  {
+    timestamps: true
+  });
+
 schema.plugin(uniqueValidator, { message: '{PATH} already exists!' });
 module.exports = mongoose.model('User', schema);

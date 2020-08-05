@@ -18,6 +18,9 @@ const postSchema = new mongoose.Schema({
     minlength: 2,
     maxlength: 280,
     required: true
+  },
+  banner: {
+    type: String
   }
 });
 
