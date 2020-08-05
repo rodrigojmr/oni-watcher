@@ -1,0 +1,20 @@
+
+{{#if following}}
+<p class="nav-link">{{user.username}}, you follow {{users.length}} users</p>
+{{else}}
+<p class="nav-link">{{user.username}}, your have {{users.length}} followers</p>
+{{/if}}
+{{#if sad}}
+<img style="width:30%;margin-top:-5%;" src="/public/images/sad.png">
+{{/if}}
+{{#if happy}}
+<img style="width:30%;" src="/public/images/happy.png">
+{{/if}}
+
+{{#each users as |user| }}
+<blockquote class="blockquote text-center">
+  <h3 class="mb-0"><img id="imglist" src="{{user.avatar}}" alt=""><a class="usersFont" href="/profile/{{user.id}}">{{user.username}}</a></h3>
+</blockquote>
+{{/each}}
+
+

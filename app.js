@@ -19,6 +19,7 @@ const profileRouter = require('./routes/profile');
 const animeRouter = require('./routes/anime');
 const libraryRouter = require('./routes/library');
 const passportRouter = require('./passport-configuration')
+const followRouter = require('./routes/follow')
 
 const searchRouter = require('./routes/search');
 
@@ -73,6 +74,7 @@ app.use('/anime', animeRouter);
 app.use('/', libraryRouter);
 app.use('/', indexRouter);
 app.use('/', passportRouter);
+app.use('/', followRouter)
 
 
 // Catch missing routes and forward to error handler
