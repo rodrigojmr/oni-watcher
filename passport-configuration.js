@@ -1,15 +1,19 @@
 'use strict';
-
-const { Router } = require('express');
-const router = new Router();
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const User = require('./models/user');
 const bcryptjs = require('bcryptjs');
-const dotenv = require('dotenv');
-dotenv.config();
 
-const nodemailer = require('nodemailer');
+      
+const generateId = length => {
+  const characters =
+    "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  let token = "";
+  for (let i = 0; i < length; i++) {
+    token += characters[Math.floor(Math.random() * characters.length)];
+  }
+  return token;
+};
 
 passport.use(
   'local-sign-up',
@@ -21,8 +25,7 @@ passport.use(
     (req, email, password, callback) => {
       const username = req.body.username;
       const role = req.body.role;
-      const confirmToken = generateId(10);
-
+      const confirmToken = generateId(20);
       bcryptjs
         .hash(password, 10)
         .then(hash => {
@@ -31,75 +34,18 @@ passport.use(
             email,
             role,
             passwordHash: hash,
-            confirmationToken: confirmToken
+            confirmationCode: confirmToken
           });
         })
         .then(user => {
-          sendMail(user);
+          
           req.session.user = user._id;
           if (user) callback(null, user);
-        })
-        .catch(error => {
-          callback(error);
         });
-    }
-  )
-);
+        
+  }));
 
-const generateId = length => {
-  const characters =
-    '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  let token = '';
-  for (let i = 0; i < length; i++) {
-    token += characters[Math.floor(Math.random() * characters.length)];
-  }
-  return token;
-};
-
-const transport = nodemailer.createTransport({
-  service: 'Gmail',
-  auth: {
-    user: process.env.NODEMAILER_EMAIL,
-    pass: process.env.NODEMAILER_PASSWORD
-  }
-});
-
-function sendMail(user) {
-  transport
-    .sendMail({
-      from: 'Anime Site" <process.env.NODEMAILER_EMAIL>',
-      to: `${user.email}`,
-      subject: 'Confirmation email',
-      html: `<b>Hello!</b>
-    please confirm your email clicking <a href="http://localhost:3000/confirm?token=${user.confirmationToken}">here</a>`
-    })
-    .then(result => {
-      console.log('Email was sent.');
-      console.log(result);
-    })
-    .catch(error => {
-      console.log('There was an error sending email');
-      console.log(error);
-    });
-}
-
-router.get('/confirmation/:token', (req, res, next) => {
-  const token = req.query.mailToken;
-  User.findOneAndUpdate({ confirmationToken: token }, { status: 'Active' })
-  .then(user =>  {
-    if (!user) {
-      return Promise.reject(
-        new Error('Confirmation unsuccessful. Please try again.')
-      );
-    } else {
-      console.log({ user });
-      res.render('/views/confirmation.hbs', { user: user });
-    }
-  })
-  .catch(error => {
-    next(error);
-  });
-});
+  
 
 passport.use(
   'local-sign-in',

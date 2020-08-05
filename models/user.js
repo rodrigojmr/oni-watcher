@@ -37,8 +37,9 @@ const schema = new mongoose.Schema({
     enum: ['Pending confirmation', 'Active'],
     default: 'Pending confirmation'
   },
-  confirmationToken: {
-    type: String
+  confirmationCode: {
+    type: String,
+    unique: true
   },
   comments: [
     {
