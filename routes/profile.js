@@ -14,17 +14,25 @@ profileRouter.get('/settings', routeGuard, (request, response) => {
   response.render('profile/settings');
 });
 
-profileRouter.post('/settings', routeGuard, fileUploader.single('avatar'), async (req, res) => {
-  const { username, email, avatar} = req.body;
-  const _id = ObjectID(req.session.passport.user);
+profileRouter.post(
+  '/settings',
+  routeGuard,
+  fileUploader.single('avatar'),
+  async (req, res) => {
+    const { username, email } = req.body;
+    const avatar = await req.file.path;
+    console.log('req.file: ', await req.file);
 
-  User.updateOne({ _id }, { $set: { username, email, avatar } }, error => {
-    if (error) {
-      throw error;
-    }
-    res.redirect(`/profile/${username}`);
-  });
-});
+    const _id = ObjectID(req.session.passport.user);
+
+    User.updateOne({ _id }, { $set: { username, email, avatar } }, error => {
+      if (error) {
+        throw error;
+      }
+      res.redirect(`/profile/${username}`);
+    });
+  }
+);
 /*
 profileRouter.post('/settings',fileUploader.single('user-avatar'), (req, res, next) => {
   const { username } = req.params;
