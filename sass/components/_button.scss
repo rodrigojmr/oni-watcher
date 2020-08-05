@@ -1,0 +1,28 @@
+.btn {
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-block;
+  transition: all 0.2s ease;
+
+  &--white {
+    background-color: white;
+    color: $color-primary;
+    border-color: $color-primary;
+
+    &:hover {
+      color: $color-primary-dark;
+      background-color: $color-gray-light-1;
+    }
+  }
+  &--red {
+    background-color: $color-primary;
+    color: $color-secondary-light;
+    border-color: $color-primary;
+
+    &:hover {
+      background-color: $color-primary-light-2;
+      border-color: $color-primary-light-2;
+    }
+  }
+}

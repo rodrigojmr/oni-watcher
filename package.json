@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "node ./server",
+    "start": "cross-env NODE_ENV=production node ./server",
     "dev": "nodemon ./server",
     "dev:debug": "DEBUG=project-2* npm run dev",
     "lint": "eslint ."
@@ -24,6 +24,7 @@
     "kitsu": "^9.1.13",
     "mongoose": "^5.6.13",
     "mongoose-beautiful-unique-validation": "^7.1.1",
+    "mongoose-friends": "^0.2.5",
     "mongoose-unique-validator": "^2.0.3",
     "morgan": "^1.9.1",
     "multer": "^1.4.2",
@@ -35,15 +36,16 @@
     "serve-favicon": "^2.5.0"
   },
   "devDependencies": {
-    "mocha": "^7.0.1",
-    "nodemon": "^2.0.2",
+    "@ironh/eslint-config": "^0.0.2",
+    "cross-env": "^7.0.2",
     "eslint": "^6.3.0",
+    "eslint-config-prettier": "^6.3.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-node": "^10.0.0",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-config-prettier": "^6.3.0",
     "eslint-plugin-prettier": "^3.1.1",
-    "prettier": "^1.18.2",
-    "@ironh/eslint-config": "^0.0.2"
+    "eslint-plugin-promise": "^4.2.1",
+    "mocha": "^7.0.1",
+    "nodemon": "^2.0.4",
+    "prettier": "^1.18.2"
   }
 }

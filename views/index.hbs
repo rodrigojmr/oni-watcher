@@ -1,7 +1,10 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
-
-<form class="search" action="/search" method="POST">
-  <label for="search__name-input" class="search__name-label"></label>
-  <input name="name" id="search__name-input" class="search__input" placeholder="Search for Anime"></input>
-</form>
+<div class="hero">
+  <div class="hero__wrapper">
+    <h1 class="heading heading--1">An anime community to fit your demonic tastes</h1>
+    <form class="search" action="/search" method="POST">
+      <label for="input-name" class="search__name-label"></label>
+      <input name="name" id="input-name" class="search__input-name" placeholder="Search anime..."></input>
+      <button class="search__btn" type="submit">Search</button>
+    </form>
+  </div>
+</div>

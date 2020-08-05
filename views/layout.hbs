@@ -4,10 +4,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title>{{title}}</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
+<<<<<<< HEAD
     <nav class="nav">
       <a class="nav__link" href="/">Home</a>
         <div class="profile">
@@ -30,7 +31,18 @@
         <a href="/authentication/sign-up">Sign Up</a>
       {{/if}}
     </nav>
+=======
+ {{> nav}}
+>>>>>>> 53affd07049876f0d56f2517f0c386d00f239ed0
     {{{body}}}
     <script src="/scripts/script.js"></script>
+    <script>
+      document.write(
+        '<script src="http://' +
+          (location.host || '${1:localhost}').split(':')[0] +
+          ':${2:35729}/livereload.js?snipver=1"></' +
+          'script>'
+      );
+    </script>
   </body>
 </html>
