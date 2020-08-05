@@ -2,20 +2,27 @@
 
 const mongoose = require('mongoose');
 
-const librarySchema = new mongoose.Schema({
-  id: {
+const libEntrySchema = new mongoose.Schema({
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
+  },
+  anime: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Anime',
     required: true
   },
-  name: {
-    type: String,
-    required: true
-  },
   status: {
     type: String,
-    enum: ['Plan to Watch, On Hold, Dropped, Completed, Currently Watching'],
-    default: 'Plan to Watch',
+    enum: [
+      'plan-to-watch',
+      'on-hold',
+      'dropped',
+      'completed',
+      'currently-watching'
+    ],
+    default: 'plan-to-watch',
     required: true
   },
   progress: {
@@ -27,6 +34,6 @@ const librarySchema = new mongoose.Schema({
   }
 });
 
-const libEntry = mongoose.model('libEntry', librarySchema);
+const LibbEntry = mongoose.model('LibEntry', libEntrySchema);
 
-module.exports = libEntry;
+module.exports = LibbEntry;

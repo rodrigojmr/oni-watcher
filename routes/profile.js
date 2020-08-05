@@ -4,6 +4,12 @@ const express = require('express');
 const User = require('./../models/user');
 const Post = require('./../models/post');
 const ObjectID = require('mongodb').ObjectID;
+<<<<<<< HEAD
+=======
+
+const LibEntry = require('../models/library');
+
+>>>>>>> 43fe7887026ede08dd2b1f2b7097afad145aa149
 const routeGuard = require('./../middleware/route-guard');
 const fileUploader = require('../cloudinary-configuration');
 
@@ -34,14 +40,25 @@ profileRouter.post('/settings',fileUploader.single('user-avatar'), (req, res, ne
 
 
 
-profileRouter.get('/:username', (req, res) => {
+profileRouter.get('/:username', async (req, res, next) => {
   const username = req.params.username;
-  User.findOne({ username })
-    .populate('post')
-    .populate('feed')
-    .then(userPublic => {
-      res.render('profile/display', { userPublic });
-    });
+
+  try {
+    const userPublic = await User.findOne({ username }).populate('post feed');
+
+    const userLibrary = await LibEntry.find({ user: userPublic._id }).populate(
+      'anime'
+    );
+
+    const data = {
+      userPublic: userPublic,
+      library: userLibrary
+    };
+
+    res.render('profile/display', data);
+  } catch (error) {
+    next(error);
+  }
 });
 
 profileRouter.post('/:username/post', async (req, res, next) => {
