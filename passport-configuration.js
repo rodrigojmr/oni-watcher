@@ -4,11 +4,10 @@ const LocalStrategy = require('passport-local').Strategy;
 const User = require('./models/user');
 const bcryptjs = require('bcryptjs');
 
-      
 const generateId = length => {
   const characters =
-    "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  let token = "";
+    '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  let token = '';
   for (let i = 0; i < length; i++) {
     token += characters[Math.floor(Math.random() * characters.length)];
   }
@@ -38,14 +37,15 @@ passport.use(
           });
         })
         .then(user => {
-          
           req.session.user = user._id;
           if (user) callback(null, user);
+        })
+        .catch(error => {
+          callback(error);
         });
-        
-  }));
-
-  
+    }
+  )
+);
 
 passport.use(
   'local-sign-in',
