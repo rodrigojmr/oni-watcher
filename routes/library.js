@@ -64,7 +64,7 @@ libraryRouter.post('/anime/:slug/favorite', async (req, res, next) => {
     const user = await User.findById(req.session.passport.user);
     const animeEntry = await Anime.findOne({ slug });
     console.log('user favorites: ', user.favorites);
-    if (user.favorites.)
+    // if (user.favorites)
     user.favorites.push(animeEntry._id);
 
     user.save();

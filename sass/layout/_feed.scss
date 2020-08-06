@@ -1,0 +1,27 @@
+.feed {
+  max-width: 1400px;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.user {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+
+  &__img-wrapper {
+  }
+
+  &__img {
+    width: 100%;
+    height: auto;
+  }
+
+  &:not(:last-child) {
+    margin-right: 3rem;
+    margin-bottom: 3rem;
+  }
+}

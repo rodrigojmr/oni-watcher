@@ -77,6 +77,4 @@ profileRouter.post('/:username/post', async (req, res, next) => {
   }
 });
 
-
-
 module.exports = profileRouter;
