@@ -69,6 +69,7 @@ $profile-avatar: 100px;
     left: calc(100% + 1rem);
     top: -70%;
     color: white;
+    white-space: nowrap;
   }
 
   &__tagline {

@@ -210,6 +210,11 @@
     {{content}}
   </p>
 {{/each}}
+{{#ifEquals creator @root.user.role }}
+  <a href="/post/{{_id}}/update">Edit</a>
+  <form action="/post/{{id}}/delete" method="post">
+  <button type="submit">Delete</button></form>
+{{/ifEquals}}
 {{#if user}}
   <div class="comments">
     <form

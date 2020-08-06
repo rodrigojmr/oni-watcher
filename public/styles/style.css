@@ -275,7 +275,8 @@ body {
     position: absolute;
     left: calc(100% + 1rem);
     top: -70%;
-    color: white; }
+    color: white;
+    white-space: nowrap; }
   .profile__tagline {
     margin-left: auto;
     font-style: italic;
