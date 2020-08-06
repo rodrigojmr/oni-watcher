@@ -20,7 +20,7 @@ router.get('/feed', routeGuard, (req, res, next) => {
     })
 })
 
-  router.get('/deleteProfile/:id', (req, res, next) => {
+  router.get('/deleteProfile/:username', (req, res, next) => {
     const {id} = req.params;
     User.findByIdAndDelete(id)
       .then( user => {
