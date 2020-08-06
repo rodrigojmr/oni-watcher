@@ -21,7 +21,8 @@ const userSchema = new Schema({
     trim: true
   },
   avatar: {
-    type: String
+    type: String,
+    default: "https://res.cloudinary.com/dloalbeo7/image/upload/v1596723467/oni-default-icon_360_rlsq8h.png"
   },
   role: {
     type: String,

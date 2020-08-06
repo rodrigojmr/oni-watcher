@@ -77,7 +77,6 @@ User.findOneAndUpdate({ confirmationCode: token }, { status: 'Active' })
 
 passport.use(
   'local-sign-up',
-  fileUploader.single('avatar'),
   new LocalStrategy(
     {
       usernameField: 'email',
