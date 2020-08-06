@@ -31,6 +31,7 @@ $profile-avatar: 100px;
 
     &__left {
       width: $profile-avatar;
+      position: relative;
     }
 
     &__right {
@@ -63,7 +64,11 @@ $profile-avatar: 100px;
 
   &__name {
     font-weight: 600;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
+    position: absolute;
+    left: calc(100% + 1rem);
+    top: -70%;
+    color: white;
   }
 
   &__tagline {
