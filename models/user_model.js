@@ -93,4 +93,4 @@ const userSchema = new Schema(
 
 userSchema.plugin(uniqueValidator, { message: '{PATH} already exists!' });
 
-module.exports = mongoose.model('users', userSchema);
+module.exports = mongoose.model('User', userSchema);

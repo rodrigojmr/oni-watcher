@@ -1,6 +1,6 @@
 <div
   class="profile-banner"
-  style="background-image: url({{userPublic.banner}})"
+  style="background-image: url(https://images.alphacoders.com/119/thumb-1920-119481.jpg);"
 >
   <div class="profile-overlay"></div>
 </div>
@@ -15,14 +15,14 @@
       </div>
     </div>
     {{#if user}}
-    {{#if check}}
+   
     <div class="profile-top__right">
        <a class="btn btn--blue" href="/follow/{{user._id}}">Follow</a>
      {{else}}
      <a class="btn btn--blue" href="/follow/{{user._id}}/delete">Unfollow</a>
       <div class="profile-top__buttons">
         <a href="" class="profile-top__button"></a>
-    {{/if}}
+   
     {{/if}}
       </div>
       <p class="profile__tagline">
@@ -216,11 +216,6 @@
     {{content}}
   </p>
 {{/each}}
-{{#ifEquals creator @root.user.role }}
-  <a href="/post/{{_id}}/update">Edit</a>
-  <form action="/post/{{id}}/delete" method="post">
-  <button type="submit">Delete</button></form>
-{{/ifEquals}}
 {{#if user}}
   <div class="comments">
     <form
