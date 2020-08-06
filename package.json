@@ -41,7 +41,6 @@
     "cross-env": "^7.0.2"
   },
   "devDependencies": {
-    "@ironh/eslint-config": "0.0.2",
     "cross-env": "^7.0.2",
     "eslint": "^6.3.0",
     "eslint-config-prettier": "^6.3.0",
