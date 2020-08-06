@@ -10,27 +10,42 @@ const fileUploader = require('../cloudinary-configuration');
 
 const profileRouter = new express.Router();
 
-profileRouter.get('/settings', routeGuard, (request, response) => {
-  response.render('profile/settings');
+profileRouter.get('/settings', routeGuard, (req, res, next) => {
+  res.render('profile/settings');
 });
 
+const twoFilesUploader = fileUploader.fields([
+  { name: 'avatar', maxCount: 1 },
+  { name: 'banner', maxCount: 1 }
+]);
 profileRouter.post(
   '/settings',
   routeGuard,
-  fileUploader.single('avatar'),
-  async (req, res) => {
-    const { username, email } = req.body;
-    const avatar = await req.file.path;
-    console.log('req.file: ', await req.file);
+  twoFilesUploader,
+  async (req, res, next) => {
+    const { username, email, tagline } = req.body;
 
-    const _id = ObjectID(req.session.passport.user);
-
-    User.updateOne({ _id }, { $set: { username, email, avatar } }, error => {
-      if (error) {
-        throw error;
+    try {
+      let avatar, banner;
+      if (await req.files.avatar) {
+        avatar = await req.files.avatar[0].path;
       }
+      if (await req.files.banner) {
+        banner = await req.files.banner[0].path;
+      }
+
+      const id = ObjectID(req.session.passport.user);
+      await User.findByIdAndUpdate(id, {
+        username,
+        email,
+        avatar,
+        tagline,
+        banner
+      });
       res.redirect(`/profile/${username}`);
-    });
+    } catch (error) {
+      next(error);
+    }
   }
 );
 
