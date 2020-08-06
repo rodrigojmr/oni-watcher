@@ -35,7 +35,9 @@ $profile-avatar: 100px;
     }
 
     &__right {
-      margin-left: auto;
+      margin-left: 3rem;
+      display: flex;
+      width: 100%;
     }
   }
 
@@ -65,7 +67,7 @@ $profile-avatar: 100px;
     font-size: 1.5rem;
     position: absolute;
     left: calc(100% + 1rem);
-    top: -70%;
+    top: -110%;
     color: white;
     white-space: nowrap;
   }

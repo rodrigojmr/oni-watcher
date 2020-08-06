@@ -251,7 +251,9 @@ body {
       width: 100px;
       position: relative; }
     .profile-top__right {
-      margin-left: auto; }
+      margin-left: 3rem;
+      display: flex;
+      width: 100%; }
   .profile__top-info {
     display: flex;
     padding-left: 1rem;
@@ -272,7 +274,7 @@ body {
     font-size: 1.5rem;
     position: absolute;
     left: calc(100% + 1rem);
-    top: -70%;
+    top: -110%;
     color: white;
     white-space: nowrap; }
   .profile__tagline {

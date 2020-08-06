@@ -13,13 +13,11 @@
       <div class="profile__name">
         {{userPublic.username}}
       </div>
-      <div class="profile__name">
-        {{userPublic.followers}}
-      </div>
-      <div class="profile__name">
-        {{userPublic.following}}
-      </div>
-      <form action="
+     
+    </div>
+
+    <div class="profile-top__right">
+       <form action="
       {{#if isFollowing}}
       /follow/{{userPublic._id}}/delete
       {{else}}
@@ -34,9 +32,6 @@
         {{/if}}
         </button>
       </form>     
-    </div>
-
-    <div class="profile-top__right">
       <p class="profile__tagline">
         Break through the heavens with your drill!
       </p>
