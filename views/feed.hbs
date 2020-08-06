@@ -1,11 +1,11 @@
 
 
 
-{{#each user as |user|}}
+{{#each users }}
 
 
-  <div class="hex" style="background-image: url({{user.avatar}});">
-       <a href="/profile/{{user._id}}">{{user.username}}</a>
+  <div class="hex" style="background-image: url({{avatar}});">
+       <a href="/profile/{{_id}}">{{username}}</a>
   </div>
      {{#if @root.moderator}}
       <a class="text-center" href="/deleteProfile/{{user._id}}">Delete profile</a>

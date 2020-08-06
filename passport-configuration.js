@@ -8,6 +8,7 @@ const router = new Router();
 const nodemailer = require('nodemailer');
 const dotenv = require('dotenv');
 dotenv.config();
+const fileUploader = require('./cloudinary-configuration');
 const routeGuard = require('./middleware/route-guard');
 
 //const fileUploader = require('../cloudinary-configuration');
@@ -76,6 +77,7 @@ User.findOneAndUpdate({ confirmationCode: token }, { status: 'Active' })
 
 passport.use(
   'local-sign-up',
+  fileUploader.single('avatar'),
   new LocalStrategy(
     {
       usernameField: 'email',
