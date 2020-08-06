@@ -19,11 +19,18 @@ $profile-avatar: 100px;
 }
 
 .profile {
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 0 8rem 0 4rem;
+  display: grid;
+  grid-template-columns:
+    [full-start] minmax(6rem, 1fr) [center-start] repeat(
+      6,
+      [col-start] minmax(min-content, 14rem) [col-end]
+    )
+    [center-end]
+    [center-end] minmax(6rem, 1fr) [full-end];
+  grid-template-rows: repeat(5, min-content);
 
   &-top {
+    grid-column: center-start / center-end;
     position: relative;
     width: 100%;
     display: flex;
@@ -72,4 +79,8 @@ $profile-avatar: 100px;
     font-weight: 200;
     color: $color-primary-light-2;
   }
+}
+
+.profile-main {
+  grid-column: center-start / center-end;
 }
