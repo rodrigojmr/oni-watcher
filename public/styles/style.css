@@ -248,7 +248,8 @@ body {
     display: inline-block;
     display: flex; }
     .profile-top__left {
-      width: 100px; }
+      width: 100px;
+      position: relative; }
     .profile-top__right {
       margin-left: auto; }
   .profile__top-info {
@@ -270,7 +271,11 @@ body {
     height: auto; }
   .profile__name {
     font-weight: 600;
-    font-size: 1.3rem; }
+    font-size: 1.5rem;
+    position: absolute;
+    left: calc(100% + 1rem);
+    top: -70%;
+    color: white; }
   .profile__tagline {
     margin-left: auto;
     font-style: italic;

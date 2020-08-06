@@ -1,18 +1,21 @@
-
-
 <div class="feed">
-     {{#each users}}
-     <div class="user">
-          <div class="user__img-wrapper">
-               <img src="{{avatar}}" alt="{{username}}'s Icon'" class="user__img">
-          </div>
-          <div class="user__info">
-               {{username}}
-          </div>
-     {{#if @root.moderator}}
-          <a class="btn btn--red" href="/deleteProfile/{{_id}}">Delete profile</a>
-     {{/if}}
-     </div>
-
-
-{{/each}}
+  {{#each users}}
+    <div class="user">
+      <div class="user__img-wrapper">
+        <a href="/profile/{{username}}">
+          <img src="{{avatar}}" alt="{{username}}'s Icon" class="user__img" />
+        </a>
+      </div>
+      <div class="user__info">
+        <a href="/profile/{{username}}">
+          {{username}}
+        </a>
+      </div>
+      {{#if @root.moderator}}
+        <a class="btn btn--red" href="/deleteProfile/{{_id}}">
+          Delete profile
+        </a>
+      {{/if}}
+    </div>
+  {{/each}}
+</div>

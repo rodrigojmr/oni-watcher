@@ -63,12 +63,21 @@ libraryRouter.post('/anime/:slug/favorite', async (req, res, next) => {
   try {
     const user = await User.findById(req.session.passport.user);
     const animeEntry = await Anime.findOne({ slug });
-    console.log('user favorites: ', user.favorites);
-    // if (user.favorites)
-    user.favorites.push(animeEntry._id);
 
+    let isFavorited = user.favorites.includes(animeEntry._id);
+    console.log('user favorites: ', user.favorites);
+
+    if (!isFavorited) {
+      user.favorites.push(animeEntry._id);
+      isFavorited = true;
+    } else {
+      const index = user.favorites.indexOf(animeEntry._id);
+      user.favorites.splice(index, 1);
+      isFavorited = false;
+    }
     user.save();
 
+    res.redirect;
     res.redirect(`/anime/${animeEntry.slug}`);
   } catch (error) {
     next(error);
