@@ -4,7 +4,7 @@
 
 const { Router } = require('express');
 const router = new Router();
-const Follow = require("../models/Follow");
+const Follow = require("../models/follow");
 const User = require("../models/user_model");
 const routeGuard = require('./../middleware/route-guard');
 
