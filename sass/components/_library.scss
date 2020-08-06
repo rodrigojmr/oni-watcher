@@ -1,4 +1,4 @@
-.library {
+.library-table {
   tr {
     display: flex;
     flex-flow: row nowrap;
@@ -7,5 +7,16 @@
 
 .library-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  grid-gap: 2rem;
+}
+
+.library-item {
+  display: flex;
+  flex-direction: column;
+
+  &__poster {
+    width: 100%;
+    height: auto;
+  }
 }

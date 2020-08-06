@@ -1,49 +1,37 @@
 $profile-avatar: 100px;
 
 .profile-banner {
-  position: relative;
-  height: 50vh;
+  height: 40vh;
   overflow: hidden;
+  background-position: center center;
   background-size: cover;
-  background-position: center;
-}
 
-.profile-overlay {
-  background-color: $color-primary-dark;
-  opacity: 0.2;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  &__img {
+  }
 }
 
 .profile {
   max-width: 1440px;
   margin: 0 auto;
   padding: 0 8rem 0 4rem;
+  display: flex;
 
-  &-top {
+  &__top {
     position: relative;
-    width: 100%;
-    display: flex;
+    display: inline-block;
+    width: $profile-avatar;
+  }
 
-    &__left {
-      position: relative;
-      display: inline-block;
-      width: calc(#{$profile-avatar});
-    }
-    &__right {
-      display: flex;
-      padding-left: 1rem;
-      width: 100%;
-    }
+  &__top-info {
+    display: flex;
+    padding-left: 1rem;
+    width: 100%;
   }
 
   &__icon-wrapper {
     position: absolute;
     border: 3px solid white;
-    top: calc(-#{$profile-avatar} + (#{$profile-avatar} / 3));
+    top: -50px;
     left: 0;
     overflow: hidden;
     border-radius: 50%;
@@ -58,12 +46,8 @@ $profile-avatar: 100px;
   }
 
   &__name {
-    position: absolute;
-    bottom: 4rem;
-    left: calc(100% + 1rem);
     font-weight: 600;
-    font-size: 1.6rem;
-    color: white;
+    font-size: 1.3rem;
   }
 
   &__tagline {
