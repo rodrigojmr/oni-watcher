@@ -8,12 +8,13 @@ router.get('/sign-up', (req, res) =>
   res.render('sign-up', { title: 'Register here' })
 );
 
-
-router.post('/sign-up',  passport.authenticate('local-sign-up', {
-    successRedirect: '/', 
-    failureRedirect: '/sign-up'})
+router.post(
+  '/sign-up',
+  passport.authenticate('local-sign-up', {
+    successRedirect: '/',
+    failureRedirect: '/sign-up'
+  })
 );
-
 
 router.get('/sign-in', (req, res) =>
   res.render('sign-in', { title: 'Log in here' })

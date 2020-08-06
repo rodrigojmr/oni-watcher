@@ -62,15 +62,30 @@ profileRouter.get('/:username', async (req, res, next) => {
     let isFollowing;
 
     if (req.session.passport) {
-      isFollowing = await Boolean(
-        Follow.findOne({ $and: [{ username }, { followerId: req.user.id }] })
-      );
+      isFollowing = await Follow.findOne({
+        $and: [{ followedId: userPublic._id }, { followerId: req.user._id }]
+      });
+
+      if (isFollowing === null) {
+        isFollowing = false;
+      } else isFollowing = true;
+    }
+
+    // GET LIST OF FOLLOWERS
+    const followersOfUser = await Follow.find({ followedId: userPublic._id });
+
+    let listOfUsers = [];
+
+    for (let object of followersOfUser) {
+      const userThatFollows = await User.findById(object.followerId);
+      listOfUsers.push(userThatFollows);
     }
 
     const data = {
       userPublic: userPublic,
       library: userLibrary,
-      isFollowing: isFollowing
+      isFollowing,
+      followers: listOfUsers
     };
 
     res.render('profile/display', data);

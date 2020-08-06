@@ -77,6 +77,7 @@ const userSchema = new Schema(
         ref: 'Post'
       }
     ],
+<<<<<<< HEAD
     followers: 
       {
         type: Number
@@ -86,6 +87,16 @@ const userSchema = new Schema(
         type: Number
       }
     
+=======
+    followers: {
+      type: Number,
+      default: 0
+    },
+    following: {
+      type: Number,
+      default: 0
+    }
+>>>>>>> 8c92339908cb628ec9e9ec46c7cd06e5c82c4a2b
   },
   {
     timestamps: true
@@ -94,4 +105,4 @@ const userSchema = new Schema(
 
 userSchema.plugin(uniqueValidator, { message: '{PATH} already exists!' });
 
-module.exports = mongoose.model('users', userSchema);
+module.exports = mongoose.model('User', userSchema);

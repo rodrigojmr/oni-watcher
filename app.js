@@ -68,7 +68,8 @@ app.use(
       maxAge: 60 * 60 * 24 * 15,
       sameSite: 'lax',
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production'
+      // secure: process.env.NODE_ENV === 'production'
+      secure: false
     },
     store: new (connectMongo(expressSession))({
       mongooseConnection: mongoose.connection,
