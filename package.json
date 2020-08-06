@@ -38,14 +38,7 @@
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "serve-favicon": "^2.5.0",
-    "@ironh/eslint-config": "0.0.2",
-    "cross-env": "^7.0.2",
-    "eslint": "^6.3.0",
-    "eslint-config-prettier": "^6.3.0",
-    "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-node": "^10.0.0",
-    "eslint-plugin-prettier": "^3.1.1",
-    "eslint-plugin-promise": "^4.2.1"
+    "cross-env": "^7.0.2"
   },
   "devDependencies": {
     "@ironh/eslint-config": "0.0.2",
