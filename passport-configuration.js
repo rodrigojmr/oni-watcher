@@ -74,6 +74,7 @@ passport.use(
       passReqToCallback: true
     },
     (req, email, password, callback) => {
+      let user;
       const username = req.body.username;
       const role = req.body.role;
       const avatar = req.body.avatar;
@@ -90,12 +91,14 @@ passport.use(
             confirmationCode: confirmToken
           });
         })
-        .then(user => {
-          sendMail(user);
-          req.session.user = user._id;
-          console.log('user._id: ', user._id);
-          console.log('req.session.user: ', req.session.user);
-          if (user) callback(null, user);
+        .then(userCreated => {
+          user = userCreated;
+          sendMail(userCreated).then(() => {
+            req.session.user = userCreated._id;
+            console.log('userCreated._id: ', userCreated._id);
+            console.log('req.session.user: ', req.session.user);
+            if (userCreated) callback(null, userCreated);
+          });
         })
         .catch(error => {
           callback(error);
