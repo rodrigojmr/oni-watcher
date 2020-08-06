@@ -77,16 +77,15 @@ const userSchema = new Schema(
         ref: 'Post'
       }
     ],
-    followers: [
+    followers: 
+      {
+        type: Number
+      },
+    following: 
       {
         type: Number
       }
-    ],
-    following: [
-      {
-        type: Number
-      }
-    ]
+    
   },
   {
     timestamps: true
