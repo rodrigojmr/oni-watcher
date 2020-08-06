@@ -8,32 +8,7 @@
     <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
-<<<<<<< HEAD
-    <nav class="nav">
-      <a class="nav__link" href="/">Home</a>
-        <div class="profile">
-      {{#if user}}
-      <a class="nav__link" href="/followed">Followers</a>
-      <a class="nav__link" href="/following">Following</a>
-      <a class="nav__link" href="/users">Users</a>
-       <img class="avatar" src="{{user.avatar}}">
-          <a class="profile__icon" href="/profile/{{ user.username }}">{{user.username}}'s Profile</a>
-          <div class="profile-dropdown">
-            {{!-- <a href="/profile/{{set name here}}" class="profile-dropdown__link"></a> --}}
-            <a href="/profile/settings" class="profile-dropdown__link">Settings</a>
-            <form action="/authentication/sign-out" method="POST">
-              <button class="profile-dropdown__link">Sign Out</button>
-            </form>
-          </div>
-        </div>
-        {{else}}
-        <a href="/authentication/sign-in">Sign In</a>
-        <a href="/authentication/sign-up">Sign Up</a>
-      {{/if}}
-    </nav>
-=======
  {{> nav}}
->>>>>>> 53affd07049876f0d56f2517f0c386d00f239ed0
     {{{body}}}
     <script src="/scripts/script.js"></script>
     <script>

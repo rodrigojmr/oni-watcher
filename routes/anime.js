@@ -5,7 +5,7 @@ const animeRouter = new Router();
 const routeGuard = require('./../middleware/route-guard');
 const setSeason = require('./../middleware/setSeason');
 
-const User = require('../models/user');
+const User = require('../models/user_model');
 const LibEntry = require('../models/library');
 const Anime = require('../models/anime');
 

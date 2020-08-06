@@ -1,7 +1,7 @@
 'use strict';
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-const User = require('./models/user');
+const User = require('./models/user_model');
 const bcryptjs = require('bcryptjs');
 const { Router } = require('express');
 const router = new Router();

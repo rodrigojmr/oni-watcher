@@ -4,7 +4,7 @@ const { Router } = require('express');
 const libraryRouter = new Router();
 const routeGuard = require('./../middleware/route-guard');
 
-const User = require('../models/user');
+const User = require('../models/user_model');
 const LibEntry = require('../models/library');
 const Anime = require('../models/anime');
 

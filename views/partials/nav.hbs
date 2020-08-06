@@ -3,16 +3,18 @@
       <a class="nav__logo" href="/">Home</a>
       <div class="navigation">
         <ul class="navigation__list">
-          <li class="navigation__item"><a href="/profile/{{user.username}}" class="navigation__link">Library</a></li>
+          <li class="navigation__item"><a href="/library" class="navigation__link">Library</a></li>
           <li class="navigation__item"><a href="/anime" class="navigation__link">Anime</a></li>
           <li class="navigation__item"><a href="/feed" class="navigation__link">Feed</a></li>
           <li class="navigation__item"><a href="/support" class="navigation__link">Support</a></li>
+          <li class="navigation__item"><a href="/following" class="navigation__link">Following</a></li>
+          <li class="navigation__item"><a href="/followers" class="navigation__link">Followers</a></li>
         </ul>
       </div>
       <div class="profile">
         {{#if user}}
         <img class="avatar" src="{{user.avatar}}">
-            <a class="profile__icon" href="/profile/{{ user.username }}">{{user.username}}'s Profile</a>
+            <a class="profile__icon" href="/profile/{{ user.username }}">Profile</a>
             <div class="profile-dropdown">
               {{!-- <a href="/profile/{{set name here}}" class="profile-dropdown__link"></a> --}}
               <a href="/profile/settings" class="profile-dropdown__link">Settings</a>

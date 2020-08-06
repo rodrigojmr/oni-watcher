@@ -1,10 +1,11 @@
 'use strict';
 
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 const uniqueValidator = require('mongoose-unique-validator');
 
-const schema = new mongoose.Schema({
+const userSchema = new Schema({
   username: {
     type: String,
     trim: true,
@@ -65,7 +66,9 @@ const schema = new mongoose.Schema({
       ref: 'Post'
     }
   ], 
-  followers: [ {type: Number
+  followers: [ 
+    {
+      type: Number
   }
   ],
   following: [
@@ -78,5 +81,6 @@ const schema = new mongoose.Schema({
     timestamps: true
   });
 
-schema.plugin(uniqueValidator, { message: '{PATH} already exists!' });
-module.exports = mongoose.model('User', schema);
+userSchema.plugin(uniqueValidator, { message: '{PATH} already exists!' });
+
+module.exports = mongoose.model('users', userSchema); 

@@ -1,7 +1,7 @@
 'use strict';
 
 const express = require('express');
-const User = require('./../models/user');
+const User = require('../models/user_model');
 const Post = require('./../models/post');
 const ObjectID = require('mongodb').ObjectID;
 const LibEntry = require('../models/library');
@@ -76,5 +76,7 @@ profileRouter.post('/:username/post', async (req, res, next) => {
     next(error);
   }
 });
+
+
 
 module.exports = profileRouter;

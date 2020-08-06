@@ -19,14 +19,11 @@ const authenticationRouter = require('./routes/authentication');
 const profileRouter = require('./routes/profile');
 const animeRouter = require('./routes/anime');
 const libraryRouter = require('./routes/library');
-<<<<<<< HEAD
-const passportRouter = require('./passport-configuration')
-const followRouter = require('./routes/follow')
-=======
 const passportRouter = require('./passport-configuration');
->>>>>>> 53affd07049876f0d56f2517f0c386d00f239ed0
-
 const searchRouter = require('./routes/search');
+const followRouter = require('./routes/follow');
+
+const feedRouter = require('./routes/feed');
 
 const passport = require('passport');
 require('./passport-configuration.js');
@@ -81,7 +78,9 @@ app.use('/anime', animeRouter);
 app.use('/', libraryRouter);
 app.use('/', indexRouter);
 app.use('/', passportRouter);
-app.use('/', followRouter)
+app.use('/', followRouter);
+app.use('/', feedRouter);
+
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => {
