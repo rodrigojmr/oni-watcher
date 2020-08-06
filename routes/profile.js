@@ -71,10 +71,21 @@ profileRouter.get('/:username', async (req, res, next) => {
       } else isFollowing = true;
     }
 
+    // GET LIST OF FOLLOWERS
+    const followersOfUser = await Follow.find({ followedId: userPublic._id });
+
+    let listOfUsers = [];
+
+    for (let object of followersOfUser) {
+      const userThatFollows = await User.findById(object.followerId);
+      listOfUsers.push(userThatFollows);
+    }
+
     const data = {
       userPublic: userPublic,
       library: userLibrary,
-      isFollowing
+      isFollowing,
+      followers: listOfUsers
     };
 
     res.render('profile/display', data);

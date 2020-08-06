@@ -8,13 +8,9 @@ const router = new Router();
 const nodemailer = require('nodemailer');
 const dotenv = require('dotenv');
 dotenv.config();
-const fileUploader = require('./cloudinary-configuration');
 const routeGuard = require('./middleware/route-guard');
 
 //const fileUploader = require('../cloudinary-configuration');
-
-
-
 
 const generateId = length => {
   const characters =
@@ -26,7 +22,6 @@ const generateId = length => {
   return token;
 };
 
-
 const transport = nodemailer.createTransport({
   service: 'Gmail',
   auth: {
@@ -36,17 +31,18 @@ const transport = nodemailer.createTransport({
 });
 
 function sendMail(user) {
-  transport.sendMail({
-    from: 'Anime Site" <process.env.NODEMAILER_EMAIL>',
-    to: `${user.email}`,
-    subject: 'Confirmation email',
-    html: `<b>Hello!</b>
+  transport
+    .sendMail({
+      from: 'Anime Site" <process.env.NODEMAILER_EMAIL>',
+      to: `${user.email}`,
+      subject: 'Confirmation email',
+      html: `<b>Hello!</b>
   please confirm your email clicking <a href = "http://localhost:3000/confirmed/${user.confirmationCode}">Click here</a>`
-  })
-  .then(result => {
-    console.log('Email was sent');
-    console.log(result);
-  });
+    })
+    .then(result => {
+      console.log('Email was sent');
+      console.log(result);
+    });
 }
 
 router.get('/confirmed', routeGuard, (req, res, next) => {
@@ -55,25 +51,20 @@ router.get('/confirmed', routeGuard, (req, res, next) => {
 });
 
 router.get(`/confirmed/:token`, (req, res, next) => {
-const token = req.params.token;
-User.findOneAndUpdate({ confirmationCode: token }, { status: 'Active' })
-.then(user =>  {
-  if (!user) {
-    return Promise.reject(
-      new Error('Confirmation successful.')
-    );
-  } else {
-    req.session.user = user._id;
-    res.redirect(`confirmed`);
-  }
-})
-.catch(error => {
-  next(error);
+  const token = req.params.token;
+  User.findOneAndUpdate({ confirmationCode: token }, { status: 'Active' })
+    .then(user => {
+      if (!user) {
+        return Promise.reject(new Error('Confirmation successful.'));
+      } else {
+        req.session.user = user._id;
+        res.redirect(`confirmed`);
+      }
+    })
+    .catch(error => {
+      next(error);
+    });
 });
-});
-
-
-
 
 passport.use(
   'local-sign-up',
@@ -102,6 +93,8 @@ passport.use(
         .then(user => {
           sendMail(user);
           req.session.user = user._id;
+          console.log('user._id: ', user._id);
+          console.log('req.session.user: ', req.session.user);
           if (user) callback(null, user);
         })
         .catch(error => {
