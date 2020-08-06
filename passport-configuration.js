@@ -31,18 +31,13 @@ const transport = nodemailer.createTransport({
 });
 
 function sendMail(user) {
-  transport
-    .sendMail({
-      from: 'Anime Site" <process.env.NODEMAILER_EMAIL>',
-      to: `${user.email}`,
-      subject: 'Confirmation email',
-      html: `<b>Hello!</b>
+  return transport.sendMail({
+    from: 'Anime Site" <process.env.NODEMAILER_EMAIL>',
+    to: `${user.email}`,
+    subject: 'Confirmation email',
+    html: `<b>Hello!</b>
   please confirm your email clicking <a href = "http://localhost:3000/confirmed/${user.confirmationCode}">Click here</a>`
-    })
-    .then(result => {
-      console.log('Email was sent');
-      console.log(result);
-    });
+  });
 }
 
 router.get('/confirmed', routeGuard, (req, res, next) => {
