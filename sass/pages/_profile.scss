@@ -1,0 +1,42 @@
+$profile-avatar: 100px;
+
+.profile-banner {
+  height: 40vh;
+  overflow: hidden;
+  background-position: center center;
+  background-size: cover;
+
+  &__img {
+  }
+}
+
+.profile {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 4rem;
+
+  &__top {
+    position: relative;
+    display: inline-block;
+    width: $profile-avatar;
+  }
+
+  &__top-info {
+    display: inline-block;
+  }
+
+  &__img-wrapper {
+    position: absolute;
+    top: -$profile-avatar;
+    left: 0;
+    overflow: hidden;
+    border-radius: 50%;
+    width: $profile-avatar;
+    height: $profile-avatar;
+  }
+
+  &__img {
+    width: 100%;
+    height: auto;
+  }
+}

@@ -30,12 +30,10 @@ html {
 }
 
 body {
-  // max-width: 52em;
   margin: 0 auto;
   box-sizing: border-box;
   font-family: sans-serif;
   line-height: 2;
-  // background-color: red;
 }
 
 a {
@@ -46,6 +44,11 @@ a {
 img {
   width: 100%;
   max-width: 100%;
+}
+
+button {
+  font-family: inherit;
+  font-size: inherit;
 }
 
 .form {
