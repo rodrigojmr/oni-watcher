@@ -1,15 +1,18 @@
 
 
-
-{{#each users }}
-
-
-  <div class="hex" style="background-image: url({{avatar}});">
-       <a href="/profile/{{_id}}">{{username}}</a>
-  </div>
+<div class="feed">
+     {{#each users}}
+     <div class="user">
+          <div class="user__img-wrapper">
+               <img src="{{avatar}}" alt="{{username}}'s Icon'" class="user__img">
+          </div>
+          <div class="user__info">
+               {{username}}
+          </div>
      {{#if @root.moderator}}
-      <a class="text-center" href="/deleteProfile/{{user._id}}">Delete profile</a>
+          <a class="btn btn--red" href="/deleteProfile/{{_id}}">Delete profile</a>
      {{/if}}
-     
+     </div>
+
 
 {{/each}}

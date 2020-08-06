@@ -215,6 +215,25 @@ body {
     border-radius: 0 25px 25px 0;
     padding-right: 1.5em;
     margin-left: -1px; }
+<<<<<<< HEAD
+=======
+
+.library-table tr {
+  display: flex;
+  flex-flow: row nowrap; }
+
+.library-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  grid-gap: 2rem; }
+
+.library-item {
+  display: flex;
+  flex-direction: column; }
+  .library-item__poster {
+    width: 100%;
+    height: auto; }
+>>>>>>> 3540b956d4b8bc728fce804ddd358fa74d820419
 
 .profile-banner {
   height: 40vh;
@@ -224,6 +243,7 @@ body {
 
 .profile {
   display: grid;
+<<<<<<< HEAD
   grid-template-columns: [full-start] minmax(6rem, 1fr) [center-start] repeat(6, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] [center-end] minmax(6rem, 1fr) [full-end];
   grid-template-rows: repeat(5, min-content); }
   .profile-top {
@@ -231,6 +251,19 @@ body {
     position: relative;
     display: inline-block;
     width: 100px; }
+=======
+  grid-template-columns: [full-start] minmax(6rem, 1fr) [center-start] repeat(5, [col-start] minmax(min-content, 10rem) [col-end]) [center-end gutter-start] minmax(2rem, 4rem) [gutter-end sidebar-start] minmax(min-content, 10rem) [sidebar-end] minmax(6rem, 1fr) [full-end];
+  grid-template-rows: repeat(5, min-content); }
+  .profile-top {
+    grid-column: center-start / sidebar-end;
+    position: relative;
+    display: inline-block;
+    display: flex; }
+    .profile-top__left {
+      width: 100px; }
+    .profile-top__right {
+      margin-left: auto; }
+>>>>>>> 3540b956d4b8bc728fce804ddd358fa74d820419
   .profile__top-info {
     display: flex;
     padding-left: 1rem;
@@ -259,6 +292,12 @@ body {
 
 .profile-main {
   grid-column: center-start / center-end; }
+<<<<<<< HEAD
+=======
+
+.profile-sidebar {
+  grid-column: sidebar-start / sidebar-end; }
+>>>>>>> 3540b956d4b8bc728fce804ddd358fa74d820419
 
 .hero {
   padding: 5rem; }
@@ -323,6 +362,27 @@ body {
   color: #333; }
   .nav-profile-dropdown > * {
     display: block; }
+<<<<<<< HEAD
+=======
+
+.feed {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; }
+
+.user {
+  width: 400px;
+  display: flex;
+  flex-direction: column; }
+  .user__img {
+    width: 100%;
+    height: auto; }
+  .user:not(:last-child) {
+    margin-right: 3rem;
+    margin-bottom: 3rem; }
+>>>>>>> 3540b956d4b8bc728fce804ddd358fa74d820419
 
 body {
   font-family: 'Montserrat', sans-serif; }
