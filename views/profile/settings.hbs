@@ -1,5 +1,5 @@
 
-<form method="POST" enctype="application/x-www-form-urlencoded">
+<form method="POST" enctype="multipart/form-data">
   <label for="input-name">New Username</label>
   <input
     id="input-name"
@@ -23,6 +23,20 @@
   id='avatar'
   type="file" 
   name="avatar"
+  >
+
+  <label for ='banner'>Banner</label>
+  <input 
+  id='banner'
+  type="file" 
+  name="banner"
+  >
+
+  <label for ='tagline'>Tagline</label>
+  <input 
+  id='tagline'
+  type="text" 
+  name="tagline"
   >
   
   <button type="submit">Edit Profile</button>

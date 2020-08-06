@@ -24,6 +24,7 @@
     "express-back": "0.0.2",
     "express-session": "^1.17.0",
     "hbs": "^4.0.4",
+    "helper-date": "^1.0.1",
     "http-errors": "^1.7.3",
     "kitsu": "^9.1.13",
     "mongoose": "^5.6.13",

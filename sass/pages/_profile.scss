@@ -54,12 +54,10 @@ $profile-avatar: 100px;
     border-radius: 50%;
     width: $profile-avatar;
     height: $profile-avatar;
-    background-color: $color-primary-dark;
   }
 
   &__icon {
     width: 100%;
-    height: auto;
   }
 
   &__name {
@@ -69,6 +67,7 @@ $profile-avatar: 100px;
     left: calc(100% + 1rem);
     top: -70%;
     color: white;
+    white-space: nowrap;
   }
 
   &__tagline {

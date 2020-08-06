@@ -10,6 +10,8 @@ const logger = require('morgan');
 const mongoose = require('mongoose');
 const sassMiddleware = require('node-sass-middleware');
 const hbs = require('hbs');
+const helperDate = require('helper-date');
+
 const serveFavicon = require('serve-favicon');
 
 const bindUserToViewLocals = require('./middleware/bind-user-to-view-locals.js');
@@ -34,6 +36,10 @@ app.set('views', join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
 hbs.registerPartials(join(__dirname, 'views/partials'));
+hbs.registerHelper('date', helperDate);
+hbs.registerHelper('ifEquals', function(arg1, arg2, options) {
+  return arg1 === arg2 ? options.fn(this) : options.inverse(this);
+});
 
 app.use(serveFavicon(join(__dirname, 'public/images', 'favicon.ico')));
 app.use(
@@ -80,7 +86,6 @@ app.use('/', indexRouter);
 app.use('/', passportRouter);
 app.use('/', followRouter);
 app.use('/', feedRouter);
-
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => {

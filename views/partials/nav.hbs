@@ -1,35 +1,70 @@
-    <nav class="nav">
-      {{!-- <img src="" alt="" class="nav__logo"> --}}
-      <a class="nav__logo" href="/">Home</a>
-      <div class="navigation">
-        <ul class="navigation__list">
-          <li class="navigation__item"><a href="/profile/{{user.username}}#library" class="navigation__link">Library</a></li>
-          <li class="navigation__item"><a href="/anime" class="navigation__link">Anime</a></li>
-          <li class="navigation__item"><a href="/feed" class="navigation__link">Feed</a></li>
-          <li class="navigation__item"><a href="/support" class="navigation__link">Support</a></li>
-          <li class="navigation__item"><a href="/following" class="navigation__link">Following</a></li>
-          <li class="navigation__item"><a href="/followers" class="navigation__link">Followers</a></li>
-        </ul>
-      </div>
-      <div class="nav-profile">
-        {{#if user}}
-          {{#if user.avatar}}
-            <img class="nav-profile__icon" src="{{user.avatar}}">
-            {{else}}
-            <div class="nav-profile__icon-wrapper">
-          {{/if}}
-          </div>
-          <a class="nav-profile__link" href="/profile/{{ user.username }}">{{user.username}}</a>
-          <div class="nav-profile-dropdown">
-            {{!-- <a href="/profile/{{set name here}}" class="profile-dropdown__link"></a> --}}
-            <a href="/profile/settings" class="nav-profile-dropdown__link">Settings</a>
-            <form action="/authentication/sign-out" method="POST">
-              <button class="nav-profile-dropdown__link">Sign Out</button>
-            </form>
-          </div>
-        {{else}}
-        <a class="btn btn--white" href="/authentication/sign-in">Sign In</a>
-        <a class="btn btn--red" href="/authentication/sign-up">Sign Up</a>
+<nav class="nav">
+  {{! <img src="" alt="" class="nav__logo"> }}
+  <a class="nav__logo" href="/">
+    Home
+  </a>
+  <div class="navigation">
+    <ul class="navigation__list">
+      <li class="navigation__item">
+        <a href="/profile/{{user.username}}#library" class="navigation__link">
+          Library
+        </a>
+      </li>
+      <li class="navigation__item">
+        <a href="/anime" class="navigation__link">
+          Anime
+        </a>
+      </li>
+      <li class="navigation__item">
+        <a href="/feed" class="navigation__link">
+          Feed
+        </a>
+      </li>
+      <li class="navigation__item">
+        <a href="/support" class="navigation__link">
+          Support
+        </a>
+      </li>
+      <li class="navigation__item">
+        <a href="/following" class="navigation__link">
+          Following
+        </a>
+      </li>
+      <li class="navigation__item">
+        <a href="/followers" class="navigation__link">
+          Followers
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="nav-profile">
+    {{#if user}}
+      <div class="nav-profile__icon-wrapper">
+        {{#if user.avatar}}
+          <img class="nav-profile__icon" src="{{user.avatar}}" />
         {{/if}}
       </div>
-    </nav>
+      <a class="nav-profile__link" href="/profile/{{user.username}}">
+        {{user.username}}
+      </a>
+      <div class="nav-profile-dropdown">
+        {{!-- <a href="/profile/{{set name here}}" class="profile-dropdown__link"></a> --}}
+        <a href="/profile/settings" class="nav-profile-dropdown__link">
+          Settings
+        </a>
+        <form action="/authentication/sign-out" method="POST">
+          <button class="nav-profile-dropdown__link">
+            Sign Out
+          </button>
+        </form>
+      </div>
+    {{else}}
+      <a class="btn btn--white" href="/authentication/sign-in">
+        Sign In
+      </a>
+      <a class="btn btn--red" href="/authentication/sign-up">
+        Sign Up
+      </a>
+    {{/if}}
+  </div>
+</nav>
