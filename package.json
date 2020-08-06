@@ -3,9 +3,8 @@
   "version": "0.5.0",
   "private": true,
   "engines": {
-  "node": "14.x"
+    "node": "14.x"
   },
-  
   "scripts": {
     "start": "cross-env NODE_ENV=production node ./server",
     "dev": "nodemon ./server",
@@ -13,6 +12,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@szmarczak/http-timer": "^1.1.2",
     "axios": "^0.19.2",
     "bcryptjs": "^2.4.3",
     "cloudinary": "^1.22.0",
@@ -37,18 +37,9 @@
     "nodemailer": "^6.4.11",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
-    "serve-favicon": "^2.5.0",
-    "@ironh/eslint-config": "0.0.2",
-    "cross-env": "^7.0.2",
-    "eslint": "^6.3.0",
-    "eslint-config-prettier": "^6.3.0",
-    "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-node": "^10.0.0",
-    "eslint-plugin-prettier": "^3.1.1",
-    "eslint-plugin-promise": "^4.2.1"
+    "serve-favicon": "^2.5.0"
   },
   "devDependencies": {
-    "@ironh/eslint-config": "0.0.2",
     "cross-env": "^7.0.2",
     "eslint": "^6.3.0",
     "eslint-config-prettier": "^6.3.0",
