@@ -13,7 +13,8 @@ $profile-avatar: 100px;
 .profile {
   max-width: 1440px;
   margin: 0 auto;
-  padding: 0 4rem;
+  padding: 0 8rem 0 4rem;
+  display: flex;
 
   &__top {
     position: relative;
@@ -22,21 +23,37 @@ $profile-avatar: 100px;
   }
 
   &__top-info {
-    display: inline-block;
+    display: flex;
+    padding-left: 1rem;
+    width: 100%;
   }
 
-  &__img-wrapper {
+  &__icon-wrapper {
     position: absolute;
-    top: -$profile-avatar;
+    border: 3px solid white;
+    top: -50px;
     left: 0;
     overflow: hidden;
     border-radius: 50%;
     width: $profile-avatar;
     height: $profile-avatar;
+    background-color: $color-primary-dark;
   }
 
-  &__img {
+  &__icon {
     width: 100%;
     height: auto;
+  }
+
+  &__name {
+    font-weight: 600;
+    font-size: 1.3rem;
+  }
+
+  &__tagline {
+    margin-left: auto;
+    font-style: italic;
+    font-weight: 200;
+    color: $color-primary-light-2;
   }
 }
