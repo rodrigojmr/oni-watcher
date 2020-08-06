@@ -6,7 +6,7 @@
     "node": "14.x"
   },
   "scripts": {
-    "start": "cross-env NODE_ENV=production node ./server",
+    "start": "node ./server",
     "dev": "nodemon ./server",
     "dev:debug": "DEBUG=project-2* npm run dev",
     "lint": "eslint ."
@@ -41,7 +41,6 @@
     "serve-favicon": "^2.5.0"
   },
   "devDependencies": {
-    "cross-env": "^7.0.2",
     "eslint": "^6.3.0",
     "eslint-config-prettier": "^6.3.0",
     "eslint-plugin-import": "^2.18.2",
