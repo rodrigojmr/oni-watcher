@@ -220,6 +220,18 @@ body {
   display: flex;
   flex-flow: row nowrap; }
 
+.library-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  grid-gap: 2rem; }
+
+.library-item {
+  display: flex;
+  flex-direction: column; }
+  .library-item__poster {
+    width: 100%;
+    height: auto; }
+
 .profile-banner {
   position: relative;
   height: 50vh;
