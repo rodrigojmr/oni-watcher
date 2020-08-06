@@ -7,6 +7,7 @@ const ObjectID = require('mongodb').ObjectID;
 const LibEntry = require('../models/library');
 const routeGuard = require('./../middleware/route-guard');
 const fileUploader = require('../cloudinary-configuration');
+const Follow = require('../models/follow');
 
 const profileRouter = new express.Router();
 
@@ -54,14 +55,22 @@ profileRouter.get('/:username', async (req, res, next) => {
 
   try {
     const userPublic = await User.findOne({ username }).populate('post feed');
+    const userLibrary = await LibEntry.find({
+      user: userPublic._id
+    }).populate('anime');
 
-    const userLibrary = await LibEntry.find({ user: userPublic._id }).populate(
-      'anime'
-    );
+    let isFollowing;
+
+    if (req.session.passport) {
+      isFollowing = await Boolean(
+        Follow.findOne({ $and: [{ username }, { followerId: req.user.id }] })
+      );
+    }
 
     const data = {
       userPublic: userPublic,
-      library: userLibrary
+      library: userLibrary,
+      isFollowing: isFollowing
     };
 
     res.render('profile/display', data);

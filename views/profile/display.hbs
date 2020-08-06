@@ -13,21 +13,38 @@
       <div class="profile__name">
         {{userPublic.username}}
       </div>
-    </div>
-    {{#if user}}
-   
-    <div class="profile-top__right">
-       <a class="btn btn--blue" href="/follow/{{user._id}}">Follow</a>
-     {{else}}
-     <a class="btn btn--blue" href="/follow/{{user._id}}/delete">Unfollow</a>
-      <div class="profile-top__buttons">
-        <a href="" class="profile-top__button"></a>
-   
-    {{/if}}
+      <div class="profile__name">
+        {{userPublic.followers}}
       </div>
+      <div class="profile__name">
+        {{userPublic.following}}
+      </div>
+      <form action="
+      {{#if isFollowing}}
+      /follow/{{userPublic._id}}/delete
+      {{else}}
+      /follow/{{userPublic._id}}
+      {{/if}}
+      " class="profile__follow-form">
+        <button class="profile__follow-btn">
+        {{#if isFollowing}}
+        Unfollow
+        {{else}}
+        Follow
+        {{/if}}
+        </button>
+      </form>     
+    </div>
+
+    <div class="profile-top__right">
       <p class="profile__tagline">
         Break through the heavens with your drill!
       </p>
+    {{!--<a class="btn btn--blue" href="/follow/{{user._id}}">Follow</a>
+     <a class="btn btn--blue" href="/follow/{{user._id}}/delete">Unfollow</a>
+      <div class="profile-top__buttons">
+        <a href="" class="profile-top__button"></a> --}}
+      </div>
     </div>
   </div>
   <div class="profile-main">
