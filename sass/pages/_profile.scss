@@ -1,12 +1,17 @@
 $profile-avatar: 100px;
 
 .profile-banner {
-  height: 40vh;
+  position: relative;
+  height: 50vh;
   overflow: hidden;
-  background-position: center center;
-  background-size: cover;
+  background-color: $color-primary-dark;
 
   &__img {
+    position: absolute;
+    top: -25%;
+    width: 100%;
+    height: auto;
+    opacity: 0.8;
   }
 }
 
@@ -14,24 +19,28 @@ $profile-avatar: 100px;
   max-width: 1440px;
   margin: 0 auto;
   padding: 0 8rem 0 4rem;
-  display: flex;
 
-  &__top {
+  &-top {
     position: relative;
-    display: inline-block;
-    width: $profile-avatar;
-  }
-
-  &__top-info {
-    display: flex;
-    padding-left: 1rem;
     width: 100%;
+    display: flex;
+
+    &__left {
+      position: relative;
+      display: inline-block;
+      width: calc(#{$profile-avatar});
+    }
+    &__right {
+      display: flex;
+      padding-left: 1rem;
+      width: 100%;
+    }
   }
 
   &__icon-wrapper {
     position: absolute;
     border: 3px solid white;
-    top: -50px;
+    top: calc(-#{$profile-avatar} + (#{$profile-avatar} / 3));
     left: 0;
     overflow: hidden;
     border-radius: 50%;
@@ -46,8 +55,12 @@ $profile-avatar: 100px;
   }
 
   &__name {
+    position: absolute;
+    bottom: 4rem;
+    left: calc(100% + 1rem);
     font-weight: 600;
-    font-size: 1.3rem;
+    font-size: 1.6rem;
+    color: white;
   }
 
   &__tagline {

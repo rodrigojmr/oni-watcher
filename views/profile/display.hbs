@@ -1,21 +1,94 @@
-<div class="profile-banner" style="background-image: url(https://images.alphacoders.com/119/thumb-1920-119481.jpg);">
+<div class="profile-banner">
+  <img
+    src="https://images.alphacoders.com/119/thumb-1920-119481.jpg"
+    class="profile-banner__img"
+  />
 </div>
-
 <main class="profile">
-  <div class="profile__top">
-    <div class="profile__icon-wrapper">
-        <img class="profile__icon" src="{{userPublic.avatar}}">
+  <div class="profile-top">
+    <div class="profile-top__left">
+      <div class="profile__icon-wrapper">
+        <img class="profile__icon" src="{{userPublic.avatar}}" />
+      </div>
+      <div class="profile__name">
+        {{userPublic.username}}
+      </div>
+    </div>
+    <div class="profile-top__right">
+      <img src="" alt="" class="profile__add-friend" />
+      <div class="profile-top__buttons">
+        <a href="" class="profile-top__button"></a>
+      </div>
+      <p class="profile__tagline">
+        Break through the heavens with your drill!
+      </p>
     </div>
   </div>
-  <div class="profile__top-info">
-    <div class="profile__name">{{userPublic.username}}</div>
-    <img src="" alt="" class="profile__add-friend">
-    <div class="profile__top-buttons">
-      <a href="" class="profile__top-button"></a>
+  <div class="profile-main">
+    <div class="library">
+      <h2 class="heading-2">
+        Library
+      </h2>
+      <h3 class="heading-3">
+        Currently Watching
+      </h3>
+      <table class="library">
+        <thead class="library-heading">
+          <tr>
+            <tr></tr>
+            <tr>
+              Title
+            </tr>
+            <tr>
+              Rating
+            </tr>
+            <tr>
+              Progress
+            </tr>
+            <tr></tr>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="library-item">
+            <td class="status"></td>
+            <td class="library-item__poster-wrapper">
+              <img
+                src="https://images-na.ssl-images-amazon.com/images/I/71baDzj8PrL.jpg"
+                alt=""
+                class="library-item__poster"
+              />
+            </td>
+            <td class="library-item__name">
+              <p>
+                Cowboy Bebop
+              </p>
+            </td>
+            <td class="library-item__rating">
+              <p>
+                10
+              </p>
+            </td>
+            <td class="library-item__progress">
+              <p>
+                <span>
+                  25
+                </span>
+                /
+                <span>
+                  25
+                </span>
+              </p>
+            </td>
+            <td class="library-item__edit">
+              <button>
+                Edit
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <p class="profile__tagline">Break through the heavens with your drill!</p>
   </div>
-
 </main>
 <h1>
   Profile
@@ -38,12 +111,22 @@
 <div class="library">
   {{#each library}}
     <div class="library-entry">
-      <img src="{{anime.poster}}" class="library-entry__img">
-      <p class="library-entry__name">{{anime.name}}</p>
-      <p class="library-entry__rating">{{rating}}</p>
-      <p class="library-entry__type">{{anime.type}}</p>
+      <img src="{{anime.poster}}" class="library-entry__img" />
+      <p class="library-entry__name">
+        {{anime.name}}
+      </p>
+      <p class="library-entry__rating">
+        {{rating}}
+      </p>
+      <p class="library-entry__type">
+        {{anime.type}}
+      </p>
       <div class="library-entry__progress">
-        <p class="library-entry__name">{{progress}}</p> / {{anime.length}}
+        <p class="library-entry__name">
+          {{progress}}
+        </p>
+        /
+        {{anime.length}}
       </div>
     </div>
   {{/each}}
