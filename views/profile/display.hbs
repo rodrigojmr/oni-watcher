@@ -1,6 +1,6 @@
 <div
   class="profile-banner"
-  style="background-image: url({{userPublic.banner}})"
+  style="background-image: url(https://images.alphacoders.com/119/thumb-1920-119481.jpg);"
 >
   <div class="profile-overlay"></div>
 </div>
@@ -14,10 +14,16 @@
         {{userPublic.username}}
       </div>
     </div>
+    {{#if user}}
+   
     <div class="profile-top__right">
-      <img src="" alt="" class="profile__add-friend" />
+       <a class="btn btn--blue" href="/follow/{{user._id}}">Follow</a>
+     {{else}}
+     <a class="btn btn--blue" href="/follow/{{user._id}}/delete">Unfollow</a>
       <div class="profile-top__buttons">
         <a href="" class="profile-top__button"></a>
+   
+    {{/if}}
       </div>
       <p class="profile__tagline">
         Break through the heavens with your drill!
