@@ -13,19 +13,29 @@ $profile-avatar: 100px;
 .profile {
   display: grid;
   grid-template-columns:
-    [full-start] minmax(6rem, 1fr) [center-start] repeat(
-      6,
-      [col-start] minmax(min-content, 14rem) [col-end]
+    [full-start] minmax(6rem, 1fr) [center-start]
+    repeat(5, [col-start] minmax(min-content, 10rem) [col-end]) [center-end
+    gutter-start] minmax(2rem, 4rem) [gutter-end sidebar-start] minmax(
+      min-content,
+      10rem
     )
-    [center-end]
-    [center-end] minmax(6rem, 1fr) [full-end];
+    [sidebar-end] minmax(6rem, 1fr)
+    [full-end];
   grid-template-rows: repeat(5, min-content);
 
   &-top {
-    grid-column: center-start / center-end;
+    grid-column: center-start / sidebar-end;
     position: relative;
     display: inline-block;
-    width: $profile-avatar;
+    display: flex;
+
+    &__left {
+      width: $profile-avatar;
+    }
+
+    &__right {
+      margin-left: auto;
+    }
   }
 
   &__top-info {
@@ -66,4 +76,8 @@ $profile-avatar: 100px;
 
 .profile-main {
   grid-column: center-start / center-end;
+}
+
+.profile-sidebar {
+  grid-column: sidebar-start / sidebar-end;
 }
