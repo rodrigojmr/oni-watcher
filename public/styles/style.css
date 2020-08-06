@@ -217,28 +217,37 @@ body {
     margin-left: -1px; }
 
 .profile-banner {
-  height: 40vh;
+  position: relative;
+  height: 50vh;
   overflow: hidden;
-  background-position: center center;
-  background-size: cover; }
+  background-color: #ac0d22; }
+  .profile-banner__img {
+    position: absolute;
+    top: -25%;
+    width: 100%;
+    height: auto;
+    opacity: 0.8; }
 
 .profile {
   max-width: 1440px;
   margin: 0 auto;
-  padding: 0 8rem 0 4rem;
-  display: flex; }
-  .profile__top {
+  padding: 0 8rem 0 4rem; }
+  .profile-top {
     position: relative;
-    display: inline-block;
-    width: 100px; }
-  .profile__top-info {
-    display: flex;
-    padding-left: 1rem;
-    width: 100%; }
+    width: 100%;
+    display: flex; }
+    .profile-top__left {
+      position: relative;
+      display: inline-block;
+      width: calc(100px); }
+    .profile-top__right {
+      display: flex;
+      padding-left: 1rem;
+      width: 100%; }
   .profile__icon-wrapper {
     position: absolute;
     border: 3px solid white;
-    top: -50px;
+    top: calc(-100px + (100px / 3));
     left: 0;
     overflow: hidden;
     border-radius: 50%;
@@ -249,8 +258,12 @@ body {
     width: 100%;
     height: auto; }
   .profile__name {
+    position: absolute;
+    bottom: 4rem;
+    left: calc(100% + 1rem);
     font-weight: 600;
-    font-size: 1.3rem; }
+    font-size: 1.6rem;
+    color: white; }
   .profile__tagline {
     margin-left: auto;
     font-style: italic;
