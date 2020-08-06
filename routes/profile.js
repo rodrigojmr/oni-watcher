@@ -62,15 +62,19 @@ profileRouter.get('/:username', async (req, res, next) => {
     let isFollowing;
 
     if (req.session.passport) {
-      isFollowing = await Boolean(
-        Follow.findOne({ $and: [{ username }, { followerId: req.user.id }] })
-      );
+      isFollowing = await Follow.findOne({
+        $and: [{ followedId: userPublic._id }, { followerId: req.user._id }]
+      });
+
+      if (isFollowing === null) {
+        isFollowing = false;
+      } else isFollowing = true;
     }
 
     const data = {
       userPublic: userPublic,
       library: userLibrary,
-      isFollowing: isFollowing
+      isFollowing
     };
 
     res.render('profile/display', data);
