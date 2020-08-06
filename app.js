@@ -24,6 +24,7 @@ const libraryRouter = require('./routes/library');
 const passportRouter = require('./passport-configuration');
 const searchRouter = require('./routes/search');
 const followRouter = require('./routes/follow');
+const postRouter = require('./routes/follow');
 
 const feedRouter = require('./routes/feed');
 
@@ -38,7 +39,9 @@ app.set('view engine', 'hbs');
 hbs.registerPartials(join(__dirname, 'views/partials'));
 hbs.registerHelper('date', helperDate);
 hbs.registerHelper('ifEquals', function(arg1, arg2, options) {
-  return arg1 === arg2 ? options.fn(this) : options.inverse(this);
+  return arg1.toString() === arg2.toString()
+    ? options.fn(this)
+    : options.inverse(this);
 });
 
 app.use(serveFavicon(join(__dirname, 'public/images', 'favicon.ico')));
@@ -82,10 +85,11 @@ app.use('/profile', profileRouter);
 app.use('/search', searchRouter);
 app.use('/anime', animeRouter);
 app.use('/', libraryRouter);
-app.use('/', indexRouter);
 app.use('/', passportRouter);
 app.use('/', followRouter);
 app.use('/', feedRouter);
+app.use('/', postRouter);
+app.use('/', indexRouter);
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => {

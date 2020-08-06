@@ -203,18 +203,25 @@
   {{/each}}
 </div>
 {{#each userPublic.feed}}
-  <p>
+  <h3 class="heading-3">
     {{title}}
-  </p>
+  </h3>
   <p>
     {{content}}
   </p>
+  {{#if @root.user}}
+    {{#ifEquals creator @root.user._id}}
+      <a href="/post/{{_id}}/update">
+        Edit
+      </a>
+      <form action="/profile/{{@root.userPublic.username}}/{{id}}/delete" method="post">
+        <button type="submit">
+          Delete
+        </button>
+      </form>
+    {{/ifEquals}}
+  {{/if}}
 {{/each}}
-{{#ifEquals creator @root.user.role }}
-  <a href="/post/{{_id}}/update">Edit</a>
-  <form action="/post/{{id}}/delete" method="post">
-  <button type="submit">Delete</button></form>
-{{/ifEquals}}
 {{#if user}}
   <div class="comments">
     <form

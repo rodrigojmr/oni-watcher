@@ -70,26 +70,4 @@ profileRouter.get('/:username', async (req, res, next) => {
   }
 });
 
-profileRouter.post('/:username/post', async (req, res, next) => {
-  const username = req.params.username;
-  const id = ObjectID(req.session.passport.user);
-  const { title, content } = req.body;
-
-  try {
-    const createdPost = await Post.create({ creator: id, title, content });
-    const userPosted = await User.findById(id);
-    const userReceivedPost = await User.findOne({ username });
-
-    console.log(createdPost, userPosted, userReceivedPost);
-
-    userReceivedPost.feed.push(createdPost._id);
-    userPosted.posts.push(createdPost._id);
-    userPosted.save();
-    userReceivedPost.save();
-    res.redirect(`/profile/${username}`);
-  } catch (error) {
-    next(error);
-  }
-});
-
 module.exports = profileRouter;
