@@ -74,7 +74,6 @@ libraryRouter.post('/anime/:slug/favorite', async (req, res, next) => {
       const index = user.favorites.indexOf(animeEntry._id);
       user.favorites.splice(index, 1);
       isFavorited = false;
-
       user.save();
     }
 
