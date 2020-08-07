@@ -228,7 +228,7 @@ body {
 
 .library-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(8rem, 11rem));
   grid-gap: 2rem; }
 
 .library-item {
@@ -415,7 +415,7 @@ body {
       width: 100px;
       position: relative; }
     .profile-top__right {
-      margin-left: 3rem;
+      margin-left: 2rem;
       display: flex;
       width: 100%; }
   .profile__top-info {
@@ -423,6 +423,8 @@ body {
     padding-left: 1rem;
     width: 100%; }
   .profile__icon-wrapper {
+    background-size: cover;
+    background-position: center center;
     position: absolute;
     border: 3px solid white;
     top: -50px;
@@ -437,8 +439,8 @@ body {
     font-weight: 600;
     font-size: 1.5rem;
     position: absolute;
-    left: calc(100% + 1rem);
-    top: -110%;
+    left: calc(100% + 2rem);
+    bottom: 100%;
     color: white;
     white-space: nowrap; }
   .profile__tagline {
@@ -453,6 +455,9 @@ body {
 .profile-sidebar {
   grid-column: sidebar-start / sidebar-end;
   grid-row: 2 / -1; }
+
+.library-header {
+  grid-column: center-start / center-end; }
 
 .profile-library {
   grid-column: center-start / center-end; }
@@ -542,6 +547,8 @@ body {
   margin-left: auto;
   position: relative; }
   .nav-profile__icon-wrapper {
+    background-size: cover;
+    background-position: center center;
     width: 65px;
     height: 65px;
     border-radius: 50%;
@@ -551,10 +558,14 @@ body {
     border-radius: 50%;
     margin-right: 0.75rem; }
 
+.nav-profile:hover .nav-profile-dropdown {
+  display: block; }
+
 .nav-profile-dropdown {
+  display: none;
   text-align: center;
   position: absolute;
-  top: 120%;
+  top: 100%;
   right: 0;
   background-color: #eeeeee;
   z-index: 100;

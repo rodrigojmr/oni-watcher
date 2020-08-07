@@ -27,24 +27,11 @@
           Support
         </a>
       </li>
-      <li class="navigation__item">
-        <a href="/following" class="navigation__link">
-          Following
-        </a>
-      </li>
-      <li class="navigation__item">
-        <a href="/followers" class="navigation__link">
-          Followers
-        </a>
-      </li>
     </ul>
   </div>
   <div class="nav-profile">
     {{#if user}}
-      <div class="nav-profile__icon-wrapper">
-        {{#if user.avatar}}
-          <img class="nav-profile__icon" src="{{user.avatar}}" />
-        {{/if}}
+      <div class="nav-profile__icon-wrapper" style="background-image:url({{user.avatar}})">
       </div>
       <a class="nav-profile__link" href="/profile/{{user.username}}">
         {{user.username}}

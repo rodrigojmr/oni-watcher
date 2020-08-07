@@ -57,10 +57,24 @@ profileRouter.get('/:username', async (req, res, next) => {
   try {
     //Find and populate user info
     const userPublic = await User.findOne({ username }).populate(
-      'post feed followers following'
+      'post feed followers following favorites'
     );
-    const userLibrary = await LibEntry.find({
-      user: userPublic._id
+    const currentlyWatching = await LibEntry.find({
+      $and: [
+        {
+          user: userPublic._id,
+          status: 'currently-watching'
+        }
+      ]
+    }).populate('anime');
+
+    const completed = await LibEntry.find({
+      $and: [
+        {
+          user: userPublic._id,
+          status: 'completed'
+        }
+      ]
     }).populate('anime');
 
     // Get following
@@ -84,12 +98,12 @@ profileRouter.get('/:username', async (req, res, next) => {
       ownProfile = userPublic._id.toString() === req.session.passport.user;
     }
 
-    console.log('isFollowing: ', isFollowing);
-    console.log('ownProfile: ', ownProfile);
+    console.log(userPublic);
 
     const data = {
       userPublic: userPublic,
-      library: userLibrary,
+      currentlyWatching,
+      completed,
       isFollowing,
       following: usersThatPublicUserFollows,
       followers: usersThatFollowPublicUser,
