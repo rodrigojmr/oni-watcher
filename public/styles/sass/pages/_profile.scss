@@ -25,7 +25,7 @@ $profile-avatar: 100px;
     }
 
     &__right {
-      margin-left: 3rem;
+      margin-left: 2rem;
       display: flex;
       width: 100%;
     }
@@ -38,6 +38,8 @@ $profile-avatar: 100px;
   }
 
   &__icon-wrapper {
+    background-size: cover;
+    background-position: center center;
     position: absolute;
     border: 3px solid white;
     top: -50px;
@@ -56,8 +58,8 @@ $profile-avatar: 100px;
     font-weight: 600;
     font-size: 1.5rem;
     position: absolute;
-    left: calc(100% + 1rem);
-    top: -110%;
+    left: calc(100% + 2rem);
+    bottom: 100%;
     color: white;
     white-space: nowrap;
   }
@@ -77,6 +79,10 @@ $profile-avatar: 100px;
 .profile-sidebar {
   grid-column: sidebar-start / sidebar-end;
   grid-row: 2 / -1;
+}
+
+.library-header {
+  grid-column: center-start / center-end;
 }
 
 .profile-library {

@@ -7,8 +7,7 @@
 <main class="profile">
   <div class="profile-top">
     <div class="profile-top__left">
-      <div class="profile__icon-wrapper">
-        <img class="profile__icon" src="{{userPublic.avatar}}" />
+      <div class="profile__icon-wrapper" style="background-image:url({{userPublic.avatar}})">
       </div>
       <div class="profile__name">
         {{userPublic.username}}
@@ -42,11 +41,11 @@
         Sign up to follow people!
       </a>
       {{/if}}
-      </div>
-      
-      <p class="profile__tagline">
-        {{userPublic.tagline}}
+
+            <p class="profile__tagline">
+        &ldquo;{{userPublic.tagline}}&rdquo;
       </p>
+      </div>
     {{!--<a class="btn btn--blue" href="/follow/{{user._id}}">Follow</a>
      <a class="btn btn--blue" href="/follow/{{user._id}}/delete">Unfollow</a>
       <div class="profile-top__buttons">
@@ -54,15 +53,16 @@
       </div>
     </div>
   </div>
-  <div class="profile-library" id="library">
-      <h2 class="heading-2">
-        Library
-      </h2>
-      <h3 class="heading-3">
-        Currently Watching
-      </h3>
-      <div class="library-grid">
-      {{#each library}}
+  <h2 class="library-header">
+    Library
+  </h2>
+  <div class="profile-library">
+    {{#if currentlyWatching}}
+    <h3 class="heading-3">
+      Currently Watching
+    </h3>
+    <div class="library-grid">
+      {{#each currentlyWatching}}
         <div class="library-item">
           <img
             src="{{anime.poster}}"
@@ -83,63 +83,71 @@
           </div>
         </div>
       {{/each}}
-      {{! <table class="library-table">
-        <thead class="library-heading">
-          <tr>
-            <tr class="status"></tr>
-            <tr>
-              Title
-            </tr>
-            <tr>
-              Rating
-            </tr>
-            <tr>
-              Progress
-            </tr>
-            <tr></tr>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="library-item">
-            <td class="status"></td>
-            <td class="library-item__poster-wrapper">
-              <img
-                src="https://images-na.ssl-images-amazon.com/images/I/71baDzj8PrL.jpg"
-                alt=""
-                class="library-item__poster"
-              />
-            </td>
-            <td class="library-item__name">
-              <p>
-                Cowboy Bebop
-              </p>
-            </td>
-            <td class="library-item__rating">
-              <p>
-                10
-              </p>
-            </td>
-            <td class="library-item__progress">
-              <p>
-                <span>
-                  25
-                </span>
-                /
-                <span>
-                  25
-                </span>
-              </p>
-            </td>
-            <td class="library-item__edit">
-              <button>
-                Edit
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table> }}
-    </div>
+    {{else}}
+      <h3>{{userPublic.username}} is not currently watching anything.</h3>
+    {{/if}}
   </div>
+  <div class="profile-library">
+    {{#if favorites}}
+    <h3 class="heading-3">
+      Favorites
+    </h3>
+    <div class="library-grid">
+    {{#each favorites}}
+      <div class="library-item">
+        <img
+          src="{{anime.poster}}"
+          alt=""
+          class="library-item__poster"
+        />
+        <div class="library-item__progress-line"></div>
+        <div class="library-item__info">
+          <span class="library-item__progress">
+        {{anime.name}}
+        </span>
+          <span class="library-item__progress">
+            {{anime.progress}} / {{anime.length}}
+          </span>
+          <span class="library-item__rating">
+            {{anime.rating}}
+          </span>
+        </div>
+    {{/each}}
+    {{else}}
+    <h3>{{userPublic.username}} has no favorites.<h3>
+    {{/if}}
+  </div>
+  <div class="profile-library">
+    {{#if completed}}
+    <h3 class="heading-3">
+      Favorites
+    </h3>
+    <div class="library-grid">
+    {{#each completed}}
+      <div class="library-item">
+        <img
+          src="{{anime.poster}}"
+          alt=""
+          class="library-item__poster"
+        />
+        <div class="library-item__progress-line"></div>
+        <div class="library-item__info">
+          <span class="library-item__progress">
+        {{anime.name}}
+        </span>
+          <span class="library-item__progress">
+            {{anime.progress}} / {{anime.length}}
+          </span>
+          <span class="library-item__rating">
+            {{anime.rating}}
+          </span>
+        </div>
+    {{/each}}
+    {{else}}
+    <h3>{{userPublic.username}} has not finished watching any shows.<h3>
+    {{/if}}
+  </div>
+</div>
   <aside class="profile-sidebar">
     <div>
       <h3 class="heading-3">
