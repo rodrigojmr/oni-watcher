@@ -72,7 +72,7 @@ profileRouter.get('/:username', async (req, res, next) => {
     // Get friends/mutuals
     // const followsIds = usersThatPublicUserFollows.map(e => e.)
     const friends = usersThatPublicUserFollows.filter(element =>
-      usersThatPublicUserFollows.some(user => user._id === element._id)
+      element.following.includes(userPublic._id)
     );
 
     // Check if logged in users follows public user

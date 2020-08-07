@@ -60,7 +60,7 @@ router.post('/profile/:username/follow', routeGuard, async (req, res, next) => {
   }
 });
 
-router.get(
+router.post(
   '/profile/:username/unfollow',
   routeGuard,
   async (req, res, next) => {

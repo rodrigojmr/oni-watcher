@@ -11,8 +11,8 @@
 <h1>Don't feel sad, someone will follow you!</h1>
 {{/if}}
 
-{{#if usersFollowing}}
- {{#each usersFollowing  }}
+{{#if usersThatPublicUserFollows}}
+ {{#each usersThatPublicUserFollows  }}
        <div class="user">
       <div class="user__img-wrapper">
         <a href="/profile/{{followedId.username}}">
