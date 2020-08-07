@@ -403,8 +403,8 @@ body {
 
 .profile {
   display: grid;
-  grid-template-columns: [full-start] minmax(6rem, 1fr) [center-start] repeat(5, [col-start] minmax(min-content, 10rem) [col-end]) [center-end gutter-start] minmax(2rem, 4rem) [gutter-end sidebar-start] minmax(min-content, 10rem) [sidebar-end] minmax(6rem, 1fr) [full-end];
-  grid-template-rows: repeat(5, min-content); }
+  grid-template-columns: [full-start] minmax(6rem, 1fr) [center-start] repeat(5, [col-start] minmax(min-content, 10rem) [col-end]) [center-end gutter-start] minmax(2rem, 4rem) [gutter-end sidebar-start] minmax(9rem, 12rem) [sidebar-end] minmax(6rem, 1fr) [full-end];
+  grid-template-rows: repeat(9, min-content); }
   .profile-top {
     grid-column: center-start / sidebar-end;
     position: relative;
@@ -454,7 +454,11 @@ body {
 
 .profile-sidebar {
   grid-column: sidebar-start / sidebar-end;
-  grid-row: 2 / -1; }
+  grid-row: 2 / -1;
+  display: flex;
+  flex-direction: column; }
+  .profile-sidebar h3 {
+    display: inline-block; }
 
 .library-header {
   grid-column: center-start / center-end; }
@@ -467,6 +471,21 @@ body {
 
 .profile-feed {
   grid-column: center-start / center-end; }
+
+.user__img-wrapper {
+  height: 65px;
+  width: 65px;
+  border-radius: 50%; }
+
+.user__img {
+  width: 100%;
+  height: auto; }
+
+.user {
+  display: flex;
+  flex-direction: column; }
+  .user__info {
+    display: inline-block; }
 
 .hero {
   padding: 5rem; }
@@ -580,17 +599,16 @@ body {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap; }
-
-.user {
-  width: 400px;
-  display: flex;
-  flex-direction: column; }
-  .user__img {
-    width: 100%;
-    height: auto; }
-  .user:not(:last-child) {
-    margin-right: 3rem;
-    margin-bottom: 3rem; }
+  .feed .user {
+    max-width: 400px;
+    display: flex;
+    flex-direction: column; }
+    .feed .user__img {
+      width: 100%;
+      height: auto; }
+    .feed .user:not(:last-child) {
+      margin-right: 3rem;
+      margin-bottom: 3rem; }
 
 body {
   font-family: 'Montserrat', sans-serif; }

@@ -5,12 +5,12 @@ $profile-avatar: 100px;
     [full-start] minmax(6rem, 1fr) [center-start]
     repeat(5, [col-start] minmax(min-content, 10rem) [col-end]) [center-end
     gutter-start] minmax(2rem, 4rem) [gutter-end sidebar-start] minmax(
-      min-content,
-      10rem
+      9rem,
+      12rem
     )
     [sidebar-end] minmax(6rem, 1fr)
     [full-end];
-  grid-template-rows: repeat(5, min-content);
+  grid-template-rows: repeat(9, min-content);
 
   &-top {
     grid-column: center-start / sidebar-end;
@@ -79,6 +79,13 @@ $profile-avatar: 100px;
 .profile-sidebar {
   grid-column: sidebar-start / sidebar-end;
   grid-row: 2 / -1;
+
+  display: flex;
+  flex-direction: column;
+
+  h3 {
+    display: inline-block;
+  }
 }
 
 .library-header {
@@ -95,4 +102,24 @@ $profile-avatar: 100px;
 
 .profile-feed {
   grid-column: center-start / center-end;
+}
+
+// Sidebar images
+.user__img-wrapper {
+  height: 65px;
+  width: 65px;
+  border-radius: 50%;
+}
+
+.user__img {
+  width: 100%;
+  height: auto;
+}
+.user {
+  display: flex;
+  flex-direction: column;
+
+  &__info {
+    display: inline-block;
+  }
 }
