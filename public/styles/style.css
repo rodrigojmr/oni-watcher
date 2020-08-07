@@ -613,11 +613,18 @@ body {
   margin: 0 auto;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
+  padding: 3rem 6rem; }
   .feed .user {
     max-width: 400px;
+    width: 100px;
     display: flex;
     flex-direction: column; }
+    .feed .user__img-wrapper {
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+      overflow: hidden; }
     .feed .user__img {
       width: 100%;
       height: auto; }
