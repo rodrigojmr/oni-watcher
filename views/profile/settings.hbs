@@ -1,43 +1,58 @@
-
-<form method="POST" enctype="multipart/form-data">
-  <label for="input-name">New Username</label>
-  <input
-    id="input-name"
-    type="text"
-    placeholder="New username"
-    name="username"
-    value="{{ user.username }}"
-  >
-
-  <label for="input-email">Email</label>
-  <input
-    id="input-email"
-    type="email"
-    placeholder="Email"
-    name="email"
-    value="{{ user.email }}"
-  >
-  
-  <label for ='avatar'>Profile Picture</label>
-  <input 
-  id='avatar'
-  type="file" 
-  name="avatar"
-  >
-
-  <label for ='banner'>Banner</label>
-  <input 
-  id='banner'
-  type="file" 
-  name="banner"
-  >
-
-  <label for ='tagline'>Tagline</label>
-  <input 
-  id='tagline'
-  type="text" 
-  name="tagline"
-  >
-  
-  <button type="submit">Edit Profile</button>
-</form>
+<section class="settings">
+  <div class="settings__header">
+    <h1 class="heading-1">
+      Profile Settings
+    </h1>
+  </div>
+  <div class="settings__hero flex-center-both">
+    <div class="settings__wrapper">
+      <form method="POST" class="settings__form" enctype="multipart/form-data">
+        <div class="settings__form-group settings__form-group--1">
+          <label for="input-name">
+            New Username
+          </label>
+          <input
+            id="input-name"
+            type="text"
+            placeholder="New username"
+            name="username"
+            value="{{user.username}}"
+          />
+        </div>
+        <div class="settings__form-group settings__form-group--2">
+          <label for="input-email">
+            Email
+          </label>
+          <input
+            id="input-email"
+            type="email"
+            placeholder="Email"
+            name="email"
+            value="{{user.email}}"
+          />
+        </div>
+        <div class="settings__form-group settings__form-group--3">
+          <label for="avatar">
+            Profile Picture
+          </label>
+          <input id="avatar" type="file" name="avatar" />
+        </div>
+        <div class="settings__form-group settings__form-group--4">
+          <label for="banner">
+            Banner
+          </label>
+          <input id="banner" type="file" name="banner" />
+        </div>
+        <div class="settings__form-group settings__form-group--5">
+          <label for="tagline">
+            Tagline
+          </label>
+          <input id="tagline" type="text" name="tagline" />
+        </div>
+        <button type="submit">
+          Edit Profile
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
