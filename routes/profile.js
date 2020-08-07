@@ -59,6 +59,10 @@ profileRouter.get('/:username', async (req, res, next) => {
     const userPublic = await User.findOne({ username }).populate(
       'post feed followers following favorites'
     );
+    const library = await LibEntry.find({
+      user: userPublic._id
+    }).populate('anime');
+
     const currentlyWatching = await LibEntry.find({
       $and: [
         {
@@ -97,8 +101,6 @@ profileRouter.get('/:username', async (req, res, next) => {
       );
       ownProfile = userPublic._id.toString() === req.session.passport.user;
     }
-
-    console.log(userPublic);
 
     const data = {
       userPublic: userPublic,

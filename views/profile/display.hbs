@@ -87,40 +87,35 @@
       <h3>{{userPublic.username}} is not currently watching anything.</h3>
     {{/if}}
   </div>
+  </div>
   <div class="profile-library">
-    {{#if favorites}}
+    {{#if userPublic.favorites}}
     <h3 class="heading-3">
       Favorites
     </h3>
     <div class="library-grid">
-    {{#each favorites}}
+    {{#each userPublic.favorites}}
       <div class="library-item">
+        <a href="/anime/{{slug}}">
         <img
-          src="{{anime.poster}}"
+          src="{{poster}}"
           alt=""
           class="library-item__poster"
         />
-        <div class="library-item__progress-line"></div>
-        <div class="library-item__info">
-          <span class="library-item__progress">
-        {{anime.name}}
-        </span>
-          <span class="library-item__progress">
-            {{anime.progress}} / {{anime.length}}
-          </span>
-          <span class="library-item__rating">
-            {{anime.rating}}
-          </span>
+        </a>
+        <div>
+          <a href="/anime/{{slug}}"><span>{{name}}</span></a> - <span>{{length}} Episodes</span></div>
         </div>
     {{/each}}
     {{else}}
     <h3>{{userPublic.username}} has no favorites.<h3>
     {{/if}}
   </div>
+  </div>
   <div class="profile-library">
     {{#if completed}}
     <h3 class="heading-3">
-      Favorites
+      Completed
     </h3>
     <div class="library-grid">
     {{#each completed}}
@@ -142,11 +137,14 @@
             {{anime.rating}}
           </span>
         </div>
+        </div>
     {{/each}}
     {{else}}
     <h3>{{userPublic.username}} has not finished watching any shows.<h3>
     {{/if}}
   </div>
+  </div>
+
 </div>
   <aside class="profile-sidebar">
     <div>
