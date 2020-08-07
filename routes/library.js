@@ -65,17 +65,18 @@ libraryRouter.post('/anime/:slug/favorite', async (req, res, next) => {
     const animeEntry = await Anime.findOne({ slug });
 
     let isFavorited = user.favorites.includes(animeEntry._id);
-    console.log('user favorites: ', user.favorites);
 
     if (!isFavorited) {
       user.favorites.push(animeEntry._id);
       isFavorited = true;
+      user.save();
     } else {
       const index = user.favorites.indexOf(animeEntry._id);
       user.favorites.splice(index, 1);
       isFavorited = false;
+
+      user.save();
     }
-    user.save();
 
     res.redirect;
     res.redirect(`/anime/${animeEntry.slug}`);
