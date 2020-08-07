@@ -7,11 +7,13 @@
 @import 'base/animations';
 @import 'base/utilities';
 
+@import 'components/banner';
 @import 'components/form';
 @import 'components/button';
 @import 'components/search';
 @import 'components/library';
 
+@import 'pages/anime';
 @import 'pages/search';
 @import 'pages/profile';
 @import 'pages/home';

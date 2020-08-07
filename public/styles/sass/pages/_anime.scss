@@ -1,17 +1,9 @@
-$profile-avatar: 100px;
-.profile {
-  display: grid;
-  grid-template-columns:
-    [full-start] minmax(6rem, 1fr) [center-start]
-    repeat(5, [col-start] minmax(min-content, 10rem) [col-end]) [center-end
-    gutter-start] minmax(2rem, 4rem) [gutter-end sidebar-start] minmax(
-      min-content,
-      10rem
-    )
-    [sidebar-end] minmax(6rem, 1fr)
-    [full-end];
-  grid-template-rows: repeat(5, min-content);
+$poster-width: 500px;
 
+.anime-page {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 6rem;
   &-top {
     grid-column: center-start / sidebar-end;
     position: relative;
@@ -20,7 +12,7 @@ $profile-avatar: 100px;
     margin-bottom: 3rem;
 
     &__left {
-      width: $profile-avatar;
+      width: $poster-width;
       position: relative;
     }
 
@@ -36,28 +28,27 @@ $profile-avatar: 100px;
     padding-left: 1rem;
     width: 100%;
   }
-
-  &__icon-wrapper {
-    position: absolute;
-    border: 3px solid white;
-    top: -50px;
+  &__sidebar {
     left: 0;
+    top: -200px;
+    position: absolute;
+  }
+  &__poster-wrapper {
     overflow: hidden;
-    border-radius: 50%;
-    width: $profile-avatar;
-    height: $profile-avatar;
+    border-radius: 3px;
   }
 
-  &__icon {
+  &__poster {
     width: 100%;
+    height: auto;
   }
 
   &__name {
     font-weight: 600;
-    font-size: 1.5rem;
+    font-size: 3rem;
     position: absolute;
     left: calc(100% + 1rem);
-    top: -110%;
+    bottom: 80%;
     color: white;
     white-space: nowrap;
   }
@@ -68,6 +59,17 @@ $profile-avatar: 100px;
     font-weight: 200;
     color: $color-primary-light-2;
   }
+}
+
+.anime-page-main {
+  margin-left: calc(#{$poster-width} - 100px);
+}
+
+.anime-page-sidebar {
+  flex: 0 0 calc(#{$poster-width} - 100px);
+}
+
+.anime-page-sidebar {
 }
 
 .profile-main {

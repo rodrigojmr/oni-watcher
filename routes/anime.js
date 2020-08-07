@@ -23,6 +23,7 @@ animeRouter.get('/:slug', async (req, res, next) => {
       include: 'genres,categories,quotes,episodes'
     });
     const anime = data[0];
+    console.log('anime: ', anime);
 
     const month = parseInt(anime.startDate.split('-')[1]);
     anime.year = anime.startDate.split('-')[0];

@@ -98,6 +98,12 @@ body {
   justify-content: center;
   align-items: center; }
 
+.banner {
+  height: 40vh;
+  overflow: hidden;
+  background-position: center center;
+  background-size: cover; }
+
 .form__group:not(:last-child) {
   margin-bottom: 2rem; }
 
@@ -232,6 +238,73 @@ body {
     width: 100%;
     height: auto; }
 
+.anime-page {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 6rem; }
+  .anime-page-top {
+    grid-column: center-start / sidebar-end;
+    position: relative;
+    display: inline-block;
+    display: flex;
+    margin-bottom: 3rem; }
+    .anime-page-top__left {
+      width: 500px;
+      position: relative; }
+    .anime-page-top__right {
+      margin-left: 3rem;
+      display: flex;
+      width: 100%; }
+  .anime-page__top-info {
+    display: flex;
+    padding-left: 1rem;
+    width: 100%; }
+  .anime-page__sidebar {
+    left: 0;
+    top: -200px;
+    position: absolute; }
+  .anime-page__poster-wrapper {
+    overflow: hidden;
+    border-radius: 3px; }
+  .anime-page__poster {
+    width: 100%;
+    height: auto; }
+  .anime-page__name {
+    font-weight: 600;
+    font-size: 3rem;
+    position: absolute;
+    left: calc(100% + 1rem);
+    bottom: 80%;
+    color: white;
+    white-space: nowrap; }
+  .anime-page__tagline {
+    margin-left: auto;
+    font-style: italic;
+    font-weight: 200;
+    color: #f5354f; }
+
+.anime-page-main {
+  margin-left: calc(500px - 100px); }
+
+.anime-page-sidebar {
+  flex: 0 0 calc(500px - 100px); }
+
+.profile-main {
+  grid-column: center-start / center-end; }
+
+.profile-sidebar {
+  grid-column: sidebar-start / sidebar-end;
+  grid-row: 2 / -1; }
+
+.profile-library {
+  grid-column: center-start / center-end; }
+
+.profile-post-area {
+  grid-column: center-start / center-end; }
+
+.profile-feed {
+  grid-column: center-start / center-end; }
+
 .search-header {
   padding: 3rem;
   flex-direction: column; }
@@ -287,12 +360,6 @@ body {
     .search-item__read-more a {
       padding: 1rem; }
 
-.profile-banner {
-  height: 40vh;
-  overflow: hidden;
-  background-position: center center;
-  background-size: cover; }
-
 .profile {
   display: grid;
   grid-template-columns: [full-start] minmax(6rem, 1fr) [center-start] repeat(5, [col-start] minmax(min-content, 10rem) [col-end]) [center-end gutter-start] minmax(2rem, 4rem) [gutter-end sidebar-start] minmax(min-content, 10rem) [sidebar-end] minmax(6rem, 1fr) [full-end];
@@ -301,7 +368,8 @@ body {
     grid-column: center-start / sidebar-end;
     position: relative;
     display: inline-block;
-    display: flex; }
+    display: flex;
+    margin-bottom: 3rem; }
     .profile-top__left {
       width: 100px;
       position: relative; }
@@ -342,7 +410,17 @@ body {
   grid-column: center-start / center-end; }
 
 .profile-sidebar {
-  grid-column: sidebar-start / sidebar-end; }
+  grid-column: sidebar-start / sidebar-end;
+  grid-row: 2 / -1; }
+
+.profile-library {
+  grid-column: center-start / center-end; }
+
+.profile-post-area {
+  grid-column: center-start / center-end; }
+
+.profile-feed {
+  grid-column: center-start / center-end; }
 
 .hero {
   padding: 5rem; }
