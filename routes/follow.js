@@ -24,8 +24,6 @@ router.get('/:username/following', routeGuard, async (req, res, next) => {
 });
 
 router.get('/:username/followers', routeGuard, async (req, res, next) => {
-  // make very sad sad condition
-
   const username = req.params.username;
 
   try {
@@ -62,7 +60,7 @@ router.post('/profile/:username/follow', routeGuard, async (req, res, next) => {
   }
 });
 
-router.get(
+router.post(
   '/profile/:username/unfollow',
   routeGuard,
   async (req, res, next) => {

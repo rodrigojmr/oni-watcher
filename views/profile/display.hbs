@@ -152,42 +152,62 @@
       Recent Activity
     </h3>
     </div>
+
+
+    <div class="follow">
+      <h3>Friends</h3>
+
+    {{#if friends}}
+      {{#each friends  }}
+        <div class="user">
+          <div class="user__img-wrapper">
+          <a href="/profile/{{username}}">
+            <img src="{{avatar}}" alt="{{username}}'s Icon" class="user__img" />
+          </a>
+        </div>
+        <div class="user__info">
+          <a href="/profile/{{username}}">
+            {{username}}
+          </a>
+        </div>
+      {{/each}}
+    {{/if}}
     
     <div class="follow">
       <h3>Following</h3>
 
-      {{#if usersFollowing}}
- {{#each usersFollowing  }}
-       <div class="user">
-      <div class="user__img-wrapper">
-        <a href="/profile/{{followedId.username}}">
-          <img src="{{followedId.avatar}}" alt="{{followedId.username}}'s Icon" class="user__img" />
-        </a>
-      </div>
-      <div class="user__info">
-        <a href="/profile/{{followedId.username}}">
-          {{followedId.username}}
-        </a>
-      </div>
- {{/each}}
-{{/if}}
+    {{#if following}}
+      {{#each following  }}
+        <div class="user">
+          <div class="user__img-wrapper">
+          <a href="/profile/{{username}}">
+            <img src="{{avatar}}" alt="{{username}}'s Icon" class="user__img" />
+          </a>
+        </div>
+        <div class="user__info">
+          <a href="/profile/{{username}}">
+            {{username}}
+          </a>
+        </div>
+      {{/each}}
+    {{/if}}
 
     </div>
     <div class="follow">
       <h3>Followers</h3>
 
 
-      {{#if usersFollowers}}
- {{#each usersFollowers  }}
+      {{#if followers}}
+ {{#each followers  }}
  <div class="user">
       <div class="user__img-wrapper">
-        <a href="/profile/{{followerId.username}}">
-          <img src="{{followerId.avatar}}" alt="{{followerId.username}}'s Icon" class="user__img" />
+        <a href="/profile/{{username}}">
+          <img src="{{avatar}}" alt="{{username}}'s Icon" class="user__img" />
         </a>
       </div>
       <div class="user__info">
-        <a href="/profile/{{followerId.username}}">
-          {{followerId.username}}
+        <a href="/profile/{{username}}">
+          {{username}}
         </a>
       </div>
 {{/each}}
