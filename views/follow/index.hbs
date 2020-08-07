@@ -11,7 +11,8 @@
 <h1>Don't feel sad, someone will follow you!</h1>
 {{/if}}
 
- {{#each users  }}
+{{#if usersFollowing}}
+ {{#each usersFollowing  }}
        <div class="user">
       <div class="user__img-wrapper">
         <a href="/profile/{{followedId.username}}">
@@ -23,10 +24,12 @@
           {{followedId.username}}
         </a>
       </div>
-{{/each}}
+ {{/each}}
+{{/if}}
 
 
-{{#each users }}
+{{#if usersFollowers}}
+ {{#each usersFollowers  }}
  <div class="user">
       <div class="user__img-wrapper">
         <a href="/profile/{{followerId.username}}">
@@ -39,7 +42,7 @@
         </a>
       </div>
 {{/each}}
-
+{{/if}}
 
 
 
