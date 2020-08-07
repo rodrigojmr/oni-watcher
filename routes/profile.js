@@ -83,9 +83,6 @@ profileRouter.get('/:username', async (req, res, next) => {
       ownProfile = userPublic._id.toString() === req.session.passport.user;
     }
 
-    console.log('isFollowing: ', isFollowing);
-    console.log('ownProfile: ', ownProfile);
-
     const data = {
       userPublic: userPublic,
       library: userLibrary,
