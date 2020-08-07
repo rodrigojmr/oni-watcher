@@ -24,6 +24,7 @@ profileRouter.post(
   routeGuard,
   twoFilesUploader,
   async (req, res, next) => {
+    console.log(req.body);
     const { username, email, tagline } = req.body;
 
     try {
