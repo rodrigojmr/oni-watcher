@@ -487,6 +487,21 @@ body {
   .user__info {
     display: inline-block; }
 
+.library-item {
+  display: flex;
+  flex-direction: column; }
+  .library-item a {
+    margin: 0;
+    line-height: 1; }
+  .library-item__info {
+    font-size: 0.8rem;
+    padding: 0.5rem;
+    background-color: #eee;
+    border-radius: 0 0 5px 5px; }
+
+.profile-post-area {
+  padding: 5rem 0; }
+
 .hero {
   padding: 5rem; }
   .hero .search {

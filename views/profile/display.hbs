@@ -103,7 +103,7 @@
           class="library-item__poster"
         />
         </a>
-        <div>
+        <div class="library-item__info">
           <a href="/anime/{{slug}}"><span>{{name}}</span></a> - <span>{{length}} Episodes</span></div>
         </div>
     {{/each}}
@@ -127,12 +127,7 @@
         />
         <div class="library-item__progress-line"></div>
         <div class="library-item__info">
-          <span class="library-item__progress">
-        {{anime.name}}
-        </span>
-          <span class="library-item__progress">
-            {{anime.progress}} / {{anime.length}}
-          </span>
+          <span class="library-item__progress">{{anime.name}}</span>
           <span class="library-item__rating">
             {{anime.rating}}
           </span>
@@ -225,7 +220,7 @@
         action="/profile/{{userPublic.username}}/post"
         class="post-form"
       >
-        <label for="input-title"></label>
+        <label for="input-title">Tite</label>
         <input id="input-title" name="title" placeholder="Title" />
         <label for="input-content">
           Post
