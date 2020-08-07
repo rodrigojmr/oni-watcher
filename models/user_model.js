@@ -77,17 +77,6 @@ const userSchema = new Schema(
         ref: 'Post'
       }
     ],
-<<<<<<< HEAD
-    followers: 
-      {
-        type: Number
-      },
-    following: 
-      {
-        type: Number
-      }
-    
-=======
     followers: {
       type: Number,
       default: 0
@@ -96,7 +85,6 @@ const userSchema = new Schema(
       type: Number,
       default: 0
     }
->>>>>>> 8c92339908cb628ec9e9ec46c7cd06e5c82c4a2b
   },
   {
     timestamps: true
