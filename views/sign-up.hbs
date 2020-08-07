@@ -1,10 +1,54 @@
-<form action="/authentication/sign-up" method="POST">
-  <label for="input-username">Username</label>
-  <input type="text" id="input-username" name="username" placeholder="Your Username" />
-  <label for="input-email">Email</label>
-  <input type="email" id="input-email" name="email" placeholder="Your Email" />
-  <label for="input-password">Password</label>
-  <input type="password"  name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"  title="Must contain at least one number and one uppercase and lowercase letter, and at least 6 or more characters" id="input-password" placeholder="*********" />
-  <button>Sign Up</button>
-</form>
-
+<div class="authentication">
+  <div class="authentication__banner"></div>
+  <div class="authentication__section flex-center-both">
+    <div class="authentication__wrapper flex-center-both">
+      <form
+        action="/authentication/sign-up"
+        class="authentication__form"
+        method="POST"
+      >
+        <div class="authentication__group">
+          <label class="authentication__label" for="input-username">
+            Username
+          </label>
+          <input
+            class="authentication__input"
+            type="text"
+            id="input-username"
+            name="username"
+            placeholder="Your Username"
+          />
+        </div>
+        <div class="authentication__group">
+          <label class="authentication__label" for="input-email">
+            Email
+          </label>
+          <input
+            class="authentication__input"
+            type="email"
+            id="input-email"
+            name="email"
+            placeholder="Your Email"
+          />
+        </div>
+        <div class="authentication__group">
+          <label class="authentication__label" for="input-password">
+            Password
+          </label>
+          <input
+            class="authentication__input"
+            type="password"
+            name="password"
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+            title="Must contain at least one number and one uppercase and lowercase letter, and at least 6 or more characters"
+            id="input-password"
+            placeholder="*********"
+          />
+        </div>
+        <button type="submit" class="authentication__button btn btn--red">
+          Sign Up
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
