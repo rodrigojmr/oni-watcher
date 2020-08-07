@@ -64,7 +64,7 @@
     <div class="library-grid">
       {{#each currentlyWatching}}
         <div class="library-item">
-          <a href="/anime/{{anime.slug}}"
+          <a href="/anime/{{anime.slug}}">
           <img
             src="{{anime.poster}}"
             alt=""
@@ -77,7 +77,7 @@
               {{anime.name}}
             </span>
             <span class="library-item__progress">
-              {{anime.progress}} / {{anime.length}}
+              {{progress}} / {{anime.length}}
             </span>
             <span class="library-item__rating">
               {{anime.rating}}

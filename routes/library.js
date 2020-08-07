@@ -40,23 +40,23 @@ libraryRouter.post('/anime/:slug/update', async (req, res, next) => {
       });
     }
 
-    const entryExists = await LibEntry.find({
-      user: req.session.passport.user,
-      anime: anime
-    });
-
-    console.log(entryExists);
-
-    // const libraryEntry = await LibEntry.create({
+    // const entryExists = await LibEntry.find({
     //   user: req.session.passport.user,
-    //   anime: animeEntry._id,
-    //   status,
-    //   progress,
-    //   rating
+    //   anime: anime
     // });
 
-    // (await animeEntry).save();
-    // (await libraryEntry).save();
+    // console.log(entryExists);
+
+    const libraryEntry = await LibEntry.create({
+      user: req.session.passport.user,
+      anime: animeEntry._id,
+      status,
+      progress,
+      rating
+    });
+
+    (await animeEntry).save();
+    (await libraryEntry).save();
 
     res.redirect(`/anime/${(await animeEntry).slug}`);
   } catch (error) {
