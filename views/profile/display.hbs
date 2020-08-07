@@ -64,11 +64,13 @@
     <div class="library-grid">
       {{#each currentlyWatching}}
         <div class="library-item">
+          <a href="/anime/{{anime.slug}}"
           <img
             src="{{anime.poster}}"
             alt=""
             class="library-item__poster"
           />
+          </a>
           <div class="library-item__progress-line"></div>
           <div class="library-item__info">
             <span class="library-item__progress">
@@ -120,11 +122,13 @@
     <div class="library-grid">
     {{#each completed}}
       <div class="library-item">
+        <a href="/anime/{{anime.slug}}">
         <img
           src="{{anime.poster}}"
           alt=""
           class="library-item__poster"
         />
+        </a>
         <div class="library-item__progress-line"></div>
         <div class="library-item__info">
           <span class="library-item__progress">{{anime.name}}</span>
