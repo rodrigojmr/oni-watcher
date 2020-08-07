@@ -75,16 +75,16 @@ profileRouter.get('/:username', async (req, res, next) => {
     );
 
     // Check if logged in users follows public user
-    let isFollowing;
-    if (req.session.passport) {
-      isFollowing = await Follow.findOne({
-        $and: [{ followedId: userPublic._id }, { followerId: req.user._id }]
-      });
-
-      if (isFollowing === null) {
-        isFollowing = false;
-      } else isFollowing = true;
+    let isFollowing, ownProfile;
+    if (req.user) {
+      isFollowing = userPublic.followers.some(
+        follower => follower._id.toString() === req.session.passport.user
+      );
+      ownProfile = userPublic._id.toString() === req.session.passport.user;
     }
+
+    console.log('isFollowing: ', isFollowing);
+    console.log('ownProfile: ', ownProfile);
 
     const data = {
       userPublic: userPublic,
@@ -92,7 +92,8 @@ profileRouter.get('/:username', async (req, res, next) => {
       isFollowing,
       following: usersThatPublicUserFollows,
       followers: usersThatFollowPublicUser,
-      friends
+      friends,
+      ownProfile
     };
 
     res.render('profile/display', data);

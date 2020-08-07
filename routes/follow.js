@@ -41,44 +41,52 @@ router.get('/:username/followers', routeGuard, async (req, res, next) => {
   }
 });
 
-router.post('/:username/follow', routeGuard, async (req, res, next) => {
+router.post('/profile/:username/follow', routeGuard, async (req, res, next) => {
   const userId = req.user._id;
+
   const username = req.params.username;
 
   try {
     const userPublic = await User.findOne({ username });
     const user = await User.findById(userId);
 
-    await userPublic.followers.push(userId);
-    await user.following.push(userPublic._id);
-
-    res.render(`/profile/${username}`);
-  } catch (error) {
-    next(error);
-  }
-});
-
-router.get('/:username/unfollow', routeGuard, async (req, res, next) => {
-  const userId = req.user._id;
-  const username = req.params.username;
-
-  try {
-    const userPublic = await User.findOne({ username });
-    const user = await User.findById(userId);
-
-    const yourIndexInUsersFollowers = userPublic.followers.indexOf(userId);
-    const indexOfPublicUser = user.following.indexOf(userPublic._id);
-
-    userPublic.followers.splice(yourIndexInUsersFollowers, 1);
-    user.following.splice(indexOfPublicUser, 1);
+    userPublic.followers.push(userId);
+    user.following.push(userPublic._id);
 
     userPublic.save();
     user.save();
 
-    res.render(`/profile/${username}`);
+    res.redirect(`/profile/${username}`);
   } catch (error) {
     next(error);
   }
 });
+
+router.get(
+  '/profile/:username/unfollow',
+  routeGuard,
+  async (req, res, next) => {
+    const userId = req.user._id;
+    const username = req.params.username;
+
+    try {
+      const userPublic = await User.findOne({ username });
+      const user = await User.findById(userId);
+
+      const yourIndexInUsersFollowers = userPublic.followers.indexOf(userId);
+      const indexOfPublicUser = user.following.indexOf(userPublic._id);
+
+      userPublic.followers.splice(yourIndexInUsersFollowers, 1);
+      user.following.splice(indexOfPublicUser, 1);
+
+      userPublic.save();
+      user.save();
+
+      res.redirect(`/profile/${username}`);
+    } catch (error) {
+      next(error);
+    }
+  }
+);
 
 module.exports = router;
