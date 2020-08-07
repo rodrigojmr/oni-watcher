@@ -19,9 +19,9 @@
     <div class="profile-top__right">
        <form action="
       {{#if isFollowing}}
-        /follow/{{userPublic._id}}/delete
+        /profile/{{userPublic._id}}/delete
         {{else}}
-        /follow/{{userPublic._id}}
+        /profile/{{userPublic._id}}
       {{/if}}
       " class="profile__follow-form">
         <button class="profile__follow-btn">
@@ -129,9 +129,57 @@
     </div>
   </div>
   <aside class="profile-sidebar">
-    <h3 class="heading-3">
+    <div>
+      <h3 class="heading-3">
       Recent Activity
     </h3>
+    </div>
+    
+    <div class="follow">
+      <h3>Following</h3>
+
+      {{#if usersFollowing}}
+ {{#each usersFollowing  }}
+       <div class="user">
+      <div class="user__img-wrapper">
+        <a href="/profile/{{followedId.username}}">
+          <img src="{{followedId.avatar}}" alt="{{followedId.username}}'s Icon" class="user__img" />
+        </a>
+      </div>
+      <div class="user__info">
+        <a href="/profile/{{followedId.username}}">
+          {{followedId.username}}
+        </a>
+      </div>
+ {{/each}}
+{{/if}}
+
+    </div>
+    <div class="follow">
+      <h3>Followers</h3>
+
+
+      {{#if usersFollowers}}
+ {{#each usersFollowers  }}
+ <div class="user">
+      <div class="user__img-wrapper">
+        <a href="/profile/{{followerId.username}}">
+          <img src="{{followerId.avatar}}" alt="{{followerId.username}}'s Icon" class="user__img" />
+        </a>
+      </div>
+      <div class="user__info">
+        <a href="/profile/{{followerId.username}}">
+          {{followerId.username}}
+        </a>
+      </div>
+{{/each}}
+{{/if}}
+
+
+
+    </div>
+
+    
   </aside>
 
 {{#if user}}

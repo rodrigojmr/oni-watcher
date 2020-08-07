@@ -26,7 +26,7 @@ const userSchema = new Schema(
       default:
         'https://res.cloudinary.com/dloalbeo7/image/upload/v1596723467/oni-default-icon_360_rlsq8h.png'
     },
-    Banner: {
+    banner: {
       type: String,
       default:
         'https://res.cloudinary.com/dloalbeo7/image/upload/v1596728409/jkkszls8r3cfmsq0du7r.jpg'
@@ -77,14 +77,18 @@ const userSchema = new Schema(
         ref: 'Post'
       }
     ],
-    followers: {
-      type: Number,
-      default: 0
-    },
-    following: {
-      type: Number,
-      default: 0
-    }
+    followers: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+      }
+    ],
+    following: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+      }
+    ]
   },
   {
     timestamps: true

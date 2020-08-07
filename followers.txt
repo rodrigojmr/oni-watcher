@@ -1,0 +1,5 @@
+Go to a user's public profile 
+Get their ID
+Find Follow models that have followerId = user's ID
+Of those models, get the followedId
+Use that ID to find users which the public user follows

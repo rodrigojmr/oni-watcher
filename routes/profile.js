@@ -54,13 +54,28 @@ profileRouter.get('/:username', async (req, res, next) => {
   const username = req.params.username;
 
   try {
-    const userPublic = await User.findOne({ username }).populate('post feed');
+    //Find and populate user info
+    const userPublic = await User.findOne({ username }).populate(
+      'post feed followers following'
+    );
     const userLibrary = await LibEntry.find({
       user: userPublic._id
     }).populate('anime');
 
-    let isFollowing;
+    // Get following
+    const usersThatPublicUserFollows = await userPublic.following;
 
+    // Get followers
+    const usersThatFollowPublicUser = await userPublic.followers;
+
+    // Get friends/mutuals
+    // const followsIds = usersThatPublicUserFollows.map(e => e.)
+    const friends = usersThatPublicUserFollows.filter(element =>
+      usersThatPublicUserFollows.some(user => user._id === element._id)
+    );
+
+    // Check if logged in users follows public user
+    let isFollowing;
     if (req.session.passport) {
       isFollowing = await Follow.findOne({
         $and: [{ followedId: userPublic._id }, { followerId: req.user._id }]
@@ -71,21 +86,13 @@ profileRouter.get('/:username', async (req, res, next) => {
       } else isFollowing = true;
     }
 
-    // GET LIST OF FOLLOWERS
-    const followersOfUser = await Follow.find({ followedId: userPublic._id });
-
-    let listOfUsers = [];
-
-    for (let object of followersOfUser) {
-      const userThatFollows = await User.findById(object.followerId);
-      listOfUsers.push(userThatFollows);
-    }
-
     const data = {
       userPublic: userPublic,
       library: userLibrary,
       isFollowing,
-      followers: listOfUsers
+      following: usersThatPublicUserFollows,
+      followers: usersThatFollowPublicUser,
+      friends
     };
 
     res.render('profile/display', data);
