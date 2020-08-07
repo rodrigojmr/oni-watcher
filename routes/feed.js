@@ -6,8 +6,11 @@ const routeGuard = require('./../middleware/route-guard');
 
 const router = new express.Router();
 
-router.get('/feed', routeGuard, (req, res, next) => {
-  let moderator = req.user.role === 'Moderator';
+router.get('/feed', (req, res, next) => {
+  let moderator;
+  if (req.user) {
+    moderator = req.user.role === 'Moderator';
+  }
   User.find().then(users => {
     const data = { users, moderator };
     res.render('feed', data);

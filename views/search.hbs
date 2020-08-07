@@ -1,13 +1,50 @@
-<div class="search-header">
+<div class="search-header flex-center-both">
+  <h1 class="heading heading--1">
+    Search Results
+  </h1>
   <form class="search" method="POST">
-  <label for="search__name-input" class="search__name-label"></label>
-  <input name="name" id="search__name-input" class="search__input" placeholder="Search for Anime"></input>
-</form>
+    <label for="search__name-input" class="search__name-label"></label>
+    <input
+      name="name"
+      id="search__name-input"
+      class="search__input-name"
+      placeholder="Search for Anime"
+    />
+    <button class="search__btn" type="submit">
+      Search
+    </button>
+  </form>
 </div>
-
-{{#each anime}}
-<img src="{{posterImage.original}}">
-<a href="/anime/{{slug}}"><p>{{canonicalTitle}}</p></a>
-<p>{{year}} - {{season}} - {{episodeCount}} episodes</p>
-<p>{{synopsis}}</p>
-{{/each}}
+<div class="search-main">
+  {{#each anime}}
+    <div class="search-item">
+      <div
+        class="search-item__poster"
+        style="background-image: url({{posterImage.original}});"
+      ></div>
+      <div class="search-item__info">
+        <a href="/anime/{{slug}}">
+          <h3 class="search-item__title">
+            {{canonicalTitle}}
+          </h3>
+        </a>
+        <p class="search-item__extra-info">
+          {{year}}
+          -
+          {{season}}
+          -
+          {{episodeCount}}
+          episodes
+        </p>
+        <div class="search-item__synopsis-wrapper">
+          <p class="search-item__synopsis">
+            {{synopsis}}
+          </p>
+        </div>
+        <div class="search-item__read-more">
+          <a href="/anime/{{slug}}">Read more</a>
+        </div>
+      </div>
+    </div>
+  {{/each}}
+</div>

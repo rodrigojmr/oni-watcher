@@ -96,7 +96,7 @@ body {
 .flex-center-both {
   display: flex;
   justify-content: center;
-  align-content: center; }
+  align-items: center; }
 
 .form__group:not(:last-child) {
   margin-bottom: 2rem; }
@@ -231,6 +231,61 @@ body {
   .library-item__poster {
     width: 100%;
     height: auto; }
+
+.search-header {
+  padding: 3rem;
+  flex-direction: column; }
+  .search-header .search {
+    max-width: 40rem;
+    margin: 0 auto; }
+    .search-header .search__input-name {
+      flex: 0 0 80%; }
+
+.search-main {
+  background-color: #eee;
+  padding: 4rem 10vw;
+  margin: 0 auto;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: [results-start] repeat(auto-fit, [col-start] minmax(25rem, 1fr) [col-end]) [results-end];
+  grid-gap: 1.5rem; }
+
+.search-item {
+  border-radius: 5px;
+  overflow: hidden;
+  display: flex;
+  height: 400px; }
+  .search-item > * {
+    flex: 0 0 50%; }
+  .search-item__poster {
+    background-size: cover;
+    background-position: center top; }
+  .search-item__info {
+    background-color: white;
+    padding: 1rem;
+    position: relative; }
+  .search-item__title {
+    line-height: 1.1;
+    margin-bottom: 5px; }
+  .search-item__extra-info {
+    font-size: 0.8rem;
+    margin-bottom: 10px; }
+  .search-item__synopsis-wrapper {
+    font-size: 0.9rem;
+    line-height: 1.2;
+    overflow: hidden; }
+    .search-item__synopsis-wrapper p {
+      text-overflow: ellipsis; }
+  .search-item__read-more {
+    z-index: 1;
+    width: 100%;
+    background-color: #f7f7f7;
+    position: absolute;
+    padding: 1rem 0;
+    bottom: 0;
+    left: 0; }
+    .search-item__read-more a {
+      padding: 1rem; }
 
 .profile-banner {
   height: 40vh;

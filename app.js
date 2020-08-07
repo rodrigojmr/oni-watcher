@@ -47,7 +47,7 @@ hbs.registerHelper('ifEquals', function(arg1, arg2, options) {
 app.use(serveFavicon(join(__dirname, 'public/images', 'favicon.ico')));
 app.use(
   sassMiddleware({
-    src: join(__dirname, '/sass'),
+    src: join(__dirname, '/public/styles/sass'),
     dest: join(__dirname, '/public/styles'),
     outputStyle:
       process.env.NODE_ENV === 'development' ? 'nested' : 'compressed',

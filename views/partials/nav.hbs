@@ -6,9 +6,11 @@
   <div class="navigation">
     <ul class="navigation__list">
       <li class="navigation__item">
+        {{#if user}}
         <a href="/profile/{{user.username}}#library" class="navigation__link">
           Library
         </a>
+        {{/if}}
       </li>
       <li class="navigation__item">
         <a href="/anime" class="navigation__link">
