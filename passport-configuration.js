@@ -31,12 +31,17 @@ const transport = nodemailer.createTransport({
 });
 
 function sendMail(user) {
+  const baseUrl =
+    process.env.NODE_ENV === 'development'
+      ? 'http://localhost:3000'
+      : 'https://oni-watchers.herokuapp.com/';
+
   return transport.sendMail({
     from: 'Anime Site" <process.env.NODEMAILER_EMAIL>',
     to: `${user.email}`,
     subject: 'Confirmation email',
     html: `<b>Hello!</b>
-  please confirm your email clicking <a href = "http://localhost:3000/confirmed/${user.confirmationCode}">Click here</a>`
+  please confirm your email clicking <a href = "${baseUrl}/confirmed/${user.confirmationCode}">Click here</a>`
   });
 }
 
