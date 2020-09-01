@@ -38,7 +38,7 @@ app.set('view engine', 'hbs');
 
 hbs.registerPartials(join(__dirname, 'views/partials'));
 hbs.registerHelper('date', helperDate);
-hbs.registerHelper('ifEquals', function (arg1, arg2, options) {
+hbs.registerHelper('ifEquals', function(arg1, arg2, options) {
   return arg1.toString() === arg2.toString()
     ? options.fn(this)
     : options.inverse(this);

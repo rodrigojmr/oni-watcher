@@ -6,7 +6,7 @@ const debug = require('debug')('project-2:server');
 const app = require('./app');
 const mongoose = require('mongoose');
 
-const PORT = parseInt(process.env.PORT, 10);
+const PORT = parseInt(process.env.PORT, 10) || 3000;
 const URI = process.env.MONGODB_URI;
 
 const terminate = error => {
