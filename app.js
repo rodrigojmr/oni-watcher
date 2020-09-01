@@ -38,7 +38,7 @@ app.set('view engine', 'hbs');
 
 hbs.registerPartials(join(__dirname, 'views/partials'));
 hbs.registerHelper('date', helperDate);
-hbs.registerHelper('ifEquals', function(arg1, arg2, options) {
+hbs.registerHelper('ifEquals', function (arg1, arg2, options) {
   return arg1.toString() === arg2.toString()
     ? options.fn(this)
     : options.inverse(this);
@@ -65,11 +65,9 @@ app.use(
     resave: true,
     saveUninitialized: false,
     cookie: {
-      maxAge: 60 * 60 * 24 * 15,
-      sameSite: 'lax',
-      httpOnly: true,
-      // secure: process.env.NODE_ENV === 'production'
-      secure: false
+      maxAge: 1000 * 60 * 60 * 24 * 15,
+      sameSite: 'none',
+      secure: true
     },
     store: new (connectMongo(expressSession))({
       mongooseConnection: mongoose.connection,

@@ -6,10 +6,10 @@ dotenv.config();
 
 const storage = new CloudinaryStorage({
   cloudinary: cloudinary.v2,
-  folder: 'Anime-Site',
-  allowedFormats: ['jpg', 'png'],
-  filename: function(req, file, cb) {
-    cb(null, file.originalname);
+  params: {
+    folder: 'localista',
+    allowedFormats: ['jpg', 'png'],
+    use_original_filename: true
   }
 });
 
