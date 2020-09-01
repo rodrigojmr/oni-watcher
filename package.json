@@ -6,8 +6,8 @@
     "node": "14.x"
   },
   "scripts": {
-    "start": "node ./server",
-    "dev": "nodemon ./server",
+    "start": "node ./server.js",
+    "dev": "nodemon ./server.js",
     "dev:debug": "DEBUG=project-2* npm run dev",
     "lint": "eslint ."
   },
