@@ -33,6 +33,7 @@ require('./passport-configuration.js');
 
 const app = express();
 
+app.set('trust proxy', 1);
 app.set('views', join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
