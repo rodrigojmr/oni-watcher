@@ -1,10 +1,51 @@
 <div class="hero flex-center-both">
   <div class="hero__wrapper">
-    <h1 class="heading heading--1">An anime community to fit your demonic needs!</h1>
+    <h1 class="heading heading--1">
+      An anime community to fit your demonic needs!
+    </h1>
     <form class="search" action="/search" method="POST">
       <label for="input-name" class="search__name-label"></label>
-      <input name="name" id="input-name" class="search__input-name" placeholder="Search anime..."></input>
-      <button class="search__btn" type="submit">Search</button>
+      <input
+        name="name"
+        id="input-name"
+        class="search__input-name"
+        placeholder="Search anime..."
+      />
+      <button class="search__btn" type="submit">
+        Search
+      </button>
     </form>
   </div>
 </div>
+<section class="home-highlights">
+  <div class="wrapper">
+    <div class="col">
+      <h3 class="heading heading--3">
+        Trending
+      </h3>
+      <div class="grid">
+        {{#each trending}}
+          <div class="anime-item">
+            <a href="/anime/{{slug}}">
+              <img src={{posterImage.medium}} alt={{canonicalTitle}} />
+            </a>
+          </div>
+        {{/each}}
+      </div>
+    </div>
+    <div class="col">
+      <h3 class="heading heading--3">
+        Top Airing
+      </h3>
+      <div class="grid">
+        {{#each current}}
+          <div class="anime-item">
+            <a href="/anime/{{slug}}">
+              <img src={{posterImage.medium}} alt={{canonicalTitle}} />
+            </a>
+          </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</section>

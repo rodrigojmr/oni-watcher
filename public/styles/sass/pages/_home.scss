@@ -10,3 +10,25 @@
     }
   }
 }
+
+.home-highlights {
+  display: flex;
+
+  .wrapper {
+    display: flex;
+  }
+
+  .col {
+    flex: 0 0 50%;
+    text-align: center;
+  }
+
+  .grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+  .anime-item {
+    flex: 0 0 200px;
+  }
+}
