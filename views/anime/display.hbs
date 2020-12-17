@@ -1,130 +1,25 @@
 <div
   class="banner"
-  style="background-image: url({{anime.coverImage.large}});"
+  style="background-image: linear-gradient(184deg, rgba(88, 5, 5, 0.055) 0%, rgba(116, 3, 3, 0.61) 100%), url(
+    {{data.anime.coverImage.large}}
+    )"
+  {{!-- style="background-image: url({{data.anime.coverImage.large}});" --}}
 ></div>
 <main class="anime-page">
   <div class="anime-page-top">
     <div class="anime-page-top__left">
-      <div class="anime-page__sidebar">
-       <div class="anime-page__poster-wrapper">
-          <img class="anime-page__poster" src="{{anime.posterImage.original}}" />
-        </div>
-              <div class="anime-page-library-add">
-        {{#if user}}
-          <div class="library-entry">
-            <form action="/anime/{{anime.slug}}/favorite" method="POST">
-              <button class="btn-favorite">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="feather feather-heart"
-                >
-                  <path
-                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
-                  ></path>
-                </svg>
-              </button>
-            </form>
-            <form action="/anime/{{anime.slug}}/update" method="POST">
-              <div>
-                <label for="input-status">
-                  Status:
-                </label>
-                <select name="status" id="input-status">
-                  <option value="plan-to-watch" selected>
-                    Plan to Watch
-                  </option>
-                  <option value="currently-watching">
-                    Currently Watching
-                  </option>
-                  <option value="on-hold">
-                    On Hold
-                  </option>
-                  <option value="dropped">
-                    Dropped
-                  </option>
-                  <option value="completed">
-                    Completed
-                  </option>
-                </select>
-              </div>
-              <div>
-                <label for="input-progress">
-                  Progress:
-                </label>
-                <input type="number" name="progress" id="input-progress" />
-                /
-                {{anime.episodeCount}}
-              </div>
-              <div>
-                <label for="input-rating">
-                  Rating
-                </label>
-                <select name="rating" id="input-rating">
-                  <option value="1">
-                    1
-                  </option>
-                  <option value="2">
-                    2
-                  </option>
-                  <option value="3">
-                    3
-                  </option>
-                  <option value="4">
-                    4
-                  </option>
-                  <option value="5">
-                    5
-                  </option>
-                  <option value="6">
-                    6
-                  </option>
-                  <option value="7">
-                    7
-                  </option>
-                  <option value="8">
-                    8
-                  </option>
-                  <option value="9">
-                    9
-                  </option>
-                  <option value="10">
-                    10
-                  </option>
-                </select>
-              </div>
-              <button type="submit">
-                Submit
-              </button>
-            </form>
-          </div>
-        {{else}}
-          <a href="/authentication/sign-up">
-            Sign up to add to your library!
-          </a>
-        {{/if}}
-      </div>
-
-
-      </div>
+      {{> animeSidebar}}
       <div class="anime-page__name">
-        {{anime.canonicalTitle}}
+        {{data.anime.canonicalTitle}}
       </div>
     </div>
     <div class="anime-page-top__right">
       <p>
-        {{anime.year}}
+        {{data.anime.year}}
         -
-        {{anime.season}}
+        {{data.anime.season}}
         -
-        {{anime.episodeCount}}
+        {{data.anime.episodeCount}}
         episodes
       </p>
     </div>
@@ -135,7 +30,7 @@
         Synopsis
       </h3>
       <p class="anime-page-synopsis">
-        {{anime.synopsis}}
+        {{data.anime.synopsis}}
       </p>
     </div>
   </div>

@@ -29,21 +29,22 @@ profileRouter.post(
 
     try {
       let avatar, banner;
+
+      const modifiedUser = {
+        username,
+        email,
+        tagline
+      };
+
       if (await req.files.avatar) {
-        avatar = await req.files.avatar[0].path;
+        modifiedUser.avatar = await req.files.avatar[0].path;
       }
       if (await req.files.banner) {
-        banner = await req.files.banner[0].path;
+        modifiedUser.banner = await req.files.banner[0].path;
       }
 
       const id = ObjectID(req.session.passport.user);
-      await User.findByIdAndUpdate(id, {
-        username,
-        email,
-        avatar,
-        tagline,
-        banner
-      });
+      await User.findByIdAndUpdate(id, modifiedUser);
       res.redirect(`/profile/${username}`);
     } catch (error) {
       next(error);

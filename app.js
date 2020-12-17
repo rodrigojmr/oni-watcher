@@ -44,6 +44,9 @@ hbs.registerHelper('ifEquals', function(arg1, arg2, options) {
     ? options.fn(this)
     : options.inverse(this);
 });
+hbs.registerHelper('json', function(content) {
+  return JSON.stringify(content);
+});
 
 app.use(serveFavicon(join(__dirname, 'public/images', 'favicon.ico')));
 app.use(

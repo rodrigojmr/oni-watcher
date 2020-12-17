@@ -16,19 +16,29 @@ animeRouter.get('/:slug', async (req, res, next) => {
   const slug = req.params.slug;
 
   try {
-    const { data } = await api.get('anime', {
+    const animeResult = await api.get('anime', {
       filter: {
         slug: slug
       },
       include: 'genres,categories,quotes,episodes'
     });
-    const anime = data[0];
-    console.log('anime: ', anime);
+    const anime = animeResult.data[0];
 
+    const entry = await Anime.findOne({ slug });
+    let libEntry;
+    if (entry) {
+      const id = entry._id;
+      libEntry = await LibEntry.findOne({
+        anime: id,
+        user: req.user
+      });
+    }
+    // libEntry.status = libEntry.status.map)
     const month = parseInt(anime.startDate.split('-')[1]);
     anime.year = anime.startDate.split('-')[0];
     anime.season = setSeason(month);
-    res.render('anime/display', { anime });
+    const data = { anime, libEntry };
+    res.render('anime/display', { data });
   } catch (error) {
     next(error);
   }

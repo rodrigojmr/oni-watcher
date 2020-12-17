@@ -121,6 +121,7 @@ body {
 
 .banner {
   height: 40vh;
+  min-height: 250px;
   overflow: hidden;
   background-position: center center;
   background-size: cover; }
@@ -259,6 +260,13 @@ body {
     width: 100%;
     height: auto; }
 
+.anime-sidebar {
+  left: 0;
+  top: -200px;
+  position: absolute; }
+  .anime-sidebar__library {
+    text-align: center; }
+
 .anime-page {
   max-width: 1600px;
   margin: 0 auto;
@@ -280,10 +288,6 @@ body {
     display: flex;
     padding-left: 1rem;
     width: 100%; }
-  .anime-page__sidebar {
-    left: 0;
-    top: -200px;
-    position: absolute; }
   .anime-page__poster-wrapper {
     overflow: hidden;
     border-radius: 3px; }
@@ -306,9 +310,6 @@ body {
 
 .anime-page-main {
   margin-left: calc(500px - 100px); }
-
-.anime-page-sidebar {
-  flex: 0 0 calc(500px - 100px); }
 
 .profile-main {
   grid-column: center-start / center-end; }

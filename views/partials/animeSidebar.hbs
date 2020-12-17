@@ -1,0 +1,110 @@
+<aside class="anime-sidebar">
+  <div class="anime-sidebar__poster-wrapper">
+    <img
+      class="anime-page__poster"
+      alt="{{data.anime.canonicalTitle}}"
+      src="{{data.anime.posterImage.original}}"
+    />
+  </div>
+  <div class="anime-sidebar__library">
+    {{#if user}}
+      <div class="library-entry">
+        <p>Update Library</p>
+        <p>Currently saved in:</p>
+        <p>{{data.libEntry.status}}</p>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="feather feather-heart"
+        >
+          <path
+            d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+          ></path>
+        </svg>
+        <form action="/anime/{{data.anime.slug}}/update" method="POST">
+          <div>
+            <label for="input-status">
+              Status:
+            </label>
+            <select name="status" id="input-status">
+              <option value="plan-to-watch" selected>
+                Plan to Watch
+              </option>
+              <option value="currently-watching">
+                Currently Watching
+              </option>
+              <option value="on-hold">
+                On Hold
+              </option>
+              <option value="dropped">
+                Dropped
+              </option>
+              <option value="completed">
+                Completed
+              </option>
+            </select>
+          </div>
+          <div>
+            <label for="input-progress">
+              Progress:
+            </label>
+            <input type="number" name="progress" id="input-progress" />
+            /
+            {{data.anime.episodeCount}}
+          </div>
+          <div>
+            <label for="input-rating">
+              Rating
+            </label>
+            <select name="rating" id="input-rating">
+              <option value="1">
+                1
+              </option>
+              <option value="2">
+                2
+              </option>
+              <option value="3">
+                3
+              </option>
+              <option value="4">
+                4
+              </option>
+              <option value="5">
+                5
+              </option>
+              <option value="6">
+                6
+              </option>
+              <option value="7">
+                7
+              </option>
+              <option value="8">
+                8
+              </option>
+              <option value="9">
+                9
+              </option>
+              <option value="10">
+                10
+              </option>
+            </select>
+          </div>
+          <button type="submit">
+            Submit
+          </button>
+        </form>
+      </div>
+    {{else}}
+      <a href="/authentication/sign-up">
+        Sign up to add to your library!
+      </a>
+    {{/if}}
+  </div>
+</aside>

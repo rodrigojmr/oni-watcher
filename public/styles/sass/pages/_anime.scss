@@ -28,11 +28,6 @@ $poster-width: 500px;
     padding-left: 1rem;
     width: 100%;
   }
-  &__sidebar {
-    left: 0;
-    top: -200px;
-    position: absolute;
-  }
   &__poster-wrapper {
     overflow: hidden;
     border-radius: 3px;
@@ -63,13 +58,6 @@ $poster-width: 500px;
 
 .anime-page-main {
   margin-left: calc(#{$poster-width} - 100px);
-}
-
-.anime-page-sidebar {
-  flex: 0 0 calc(#{$poster-width} - 100px);
-}
-
-.anime-page-sidebar {
 }
 
 .profile-main {
